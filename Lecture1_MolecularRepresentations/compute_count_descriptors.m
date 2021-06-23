@@ -1,4 +1,4 @@
-function [descriptors, labels] = compute_descriptors(smiles)
+function [descriptors, labels] = compute_count_descriptors(smiles)
 % insert description of the code function here
 % describe inputs and outputs
 
