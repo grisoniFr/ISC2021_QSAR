@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Classification toolbox for MATLAB</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta name="generator" content="HAPedit 3.0">
+
+<link href = "style_structure.css" rel="stylesheet" type="text/css">
+<link href = "style_text.css" rel="stylesheet" type="text/css">
+<link href = "style_tables.css" rel="stylesheet" type="text/css">
+
+<style type="text/css">
+<!--
+.style1 {
+	color: #FF0000;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body>
+<div id="container">
+<a name="top"></a>
+
+    <div id="header">
+		<iframe src="header.htm" width="740" height="60" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+    </div>
+
+    <div id="content">
+
+		<table width="740" border="0" cellpadding="0" cellspacing="0">
+  		<tr>
+		<td width="150" valign="top">
+		
+		<iframe src="menu_lateral.htm" width="135" height="360" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+		
+		</td>
+
+    	<td valign="top">
+
+		  <div align="justify">
+		    <div id="tab_duo_contenitor" class="text">
+		    <span class="title_page">Example</span>		
+		    <BR>
+		    <BR>
+    
+		<div id="tab_duo_text">
+			  <div id="tab_space_lateral"><a href="#sub_0" class="lnk_text">The Sediment dataset </a></div>
+			  <div id="tab_space_lateral"><a href="#sub_0bis" class="lnk_text">Working with the graphical interface</a></div>
+		      <div id="tab_space_lateral"><a href="#sub_1" class="lnk_text">Working with the command line</a></div>
+	   	</div>
+    <BR><a name="sub_0" id="sub_0"></a>
+		    <BR>
+		    
+		<span class="title_paragraph">The Sediment dataset</span>
+		    <BR>
+		    <BR>
+		    The Sediment dataset is composed by 1884 sediment samples. Samples were divided into 2 classes on the basis of their toxicity (class 1: non toxic, class 2: toxic) and described by 9 chemical variables. The dataset was randomly divided in two sets, one training set (1413 samples) and one test set (471 samples). The dataset has been published in the following papers: 
+			<BR>
+			<BR>
+            M. Alvarez-Guerra, D. Ballabio, J. M. Amigo, J. R. Viguri, R. Bro, A chemometric approach to the environmental problem of predicting toxicity in contaminated sediments, <em>Journal of Chemometrics</em> (<strong>2010</strong>), 24, 379-386
+            <BR><BR>M. Alvarez-Guerra, D. Ballabio, J. M. Amigo, R. Bro, J. R. Viguri, Development of models for predicting toxicity from sediment chemistry by partial least squares-discriminant analysis and counter-propagation artificial neural networks, <em>Environmental Pollution</em> (<strong>2010</strong>), 158, 607-614<BR>
+            <BR>
+            A <strong>detailed description on the analysis of this dataset</strong> by means of PLSDA is given in the following paper: <BR><BR>
+            Ballabio D, Consonni V, (<strong>2013</strong>) Classification tools in chemistry. Part 1: Linear models. PLS-DA. <em>Analytical Methods</em>, 5, 3790-3798<BR><BR>
+            In the following paragraphs, a resume of the PLSDA model built by means of the Classification toolbox for MATLAB is given. The Sediment dataset is provided together with the toolbox. It can be opened by typing:<br>
+            <br>
+            <div id="tab_duo_text" class="text_math"> load sediment </div>
+            <br>
+on the MATLAB command window. Note that original data were log transformed. <BR>
+			  <BR>
+			  [<a href="#top" class="lnk_text">-> top</a>]<BR>
+		      <BR>
+		      <a name="sub_0bis" id="sub_0"></a>
+		      <BR>
+		    
+		      <span class="title_paragraph">Working with the graphical interface</span><BR>
+		      <BR>
+		    Once data have been loaded in the MATLAB workspace, you can open the graphical interface by typing the following code in the MATLAB command window: <BR>
+            </p>
+            <div id="tab_duo_text" class="text_math"> class_gui</div>
+            <BR> 
+            In order to build a classification model by means of PLSDA, we have to load data and class vector in the GUI. In order to do that, we can proceed in the following way: select &quot;load data&quot; in the file menu.
+            We can select the Xtrain_log MATLAB variable (the data) and click load. The listbox of the toolbox main form will be updated with the data details (number of samples, number of variables). <BR>
+            Then we can follow the same procedure for loading the corresponding class vector, by clicking &quot;load class&quot; in the file menu. Note that the <a href="gui.htm" class="lnk_text">class labels can be loaded</a> as  numerical vector (class_train) or as strings cell array (class_train_string).  The class details (number of classes) will be updated in the toolbox main form. Finally, we can load the sample and variable labels (samples_train and variables, by clicking &quot;load labels&quot; in the file menu).<BR>
+            <BR>
+			<center>
+              <img src="example_plsda_01.gif">            </center>
+			<BR>We can have a look to the variable means by choosing &quot;view-&gt;plot profiles&quot;. This will open a new window where the profiles of the variable averages (on the raw and scaled data) are shown. Since the class vector is loaded,  averages are calculated on each class separately.<BR>
+			<BR>
+            <center>
+              <img src="example_plsda_02.gif" width="493" height="333">            </center>
+            <BR>
+            We can now proceed in the calculation of the PLSDA classification model. By clicking the &quot;calculate-&gt;Partial Least Squares DA-&gt;optimal components for PLSDA&quot; we can choose the settings for cross validating the model and selecting the optimal number of components. The form for settings PLSDA options will appear. Here you can select the
+ data scaling (no scaling in this example),  the type of assignation criterion (bayes) and the type of  validation (cross validation with venetian blinds with 5 cv groups). The cross validation procedure for selecting the optimal components for PLSDA will produce a plot of the number of components retained in the model versus the <a href="classparameters.htm" class="lnk_text">error rate</a> (and the ratio of not assigned samples, if any). Here we can choose 2 components.<BR> <BR>
+			<center>
+              <img src="example_plsda_03.gif">            </center>
+			<BR>
+			We can now calibrate the PLSDA model by selecting &quot;calculate-&gt;Partial Least Squares DA-&gt;fit PLSDA&quot;. The corresponding setting form will appear. Here you can select the number of latent variables to be retained in the model (2 in this example), data scaling (no scaling), type of assignation criterion (bayes), and type of  validation (venetian blinds with 5 cv groups). Then, click &quot;calculate&quot;.<BR> <BR>
+			<center>
+              <img src="example_plsda_04.gif">            </center><BR>
+			After the model calculation (and validation), the main form of the toolbox will be updated with the model details (type of calculated model, error rate in fitting and cross validation). 
+			In this example, the error rate of the PLSDA model is equal to 0.19 (19%) in fitting and to 0.20 in cross validation. 
+			Detailed classification results can be analysed by clicking &quot;results-&gt;classification measures&quot;. The following form will appear.<BR><BR>
+			<center>
+			  <img src="example_plsda_05.gif">			</center>
+			<BR>
+			All <a href="classparameters.htm" class="lnk_text">classification measures</a> are shown in this form, both for calibration and  validation results. Considering<a href="classparameters.htm" class="lnk_text"> specificity and sensitivity</a>, non toxic (class 1) and toxic (class 2) were  partially separated.			            Class measures can be exported in a matrix by clicking the &quot;view class measures&quot; button, while the confusion matrix can be seen by clicking &quot;view confusion matrix&quot;. <BR>
+			The overlap between classes is confirmed from the <a href="classparameters.htm" class="lnk_text">ROC curves</a> of the classes. The ROC curve plots can be opened with the &quot;results-&gt;PLSDA results-&gt;ROC curve&quot; button.<BR><BR>
+            <center>
+              <img src="example_plsda_06.gif">            </center>
+  			<BR>
+  			Then, we can have a look to the PLSDA scores, by choosing &quot;results-&gt;PLSDA results-&gt;scores&quot;.<a href="gui_results.htm#sub_2c" class="lnk_text"> A form will appear</a>. In this form, results related to samples can be plotted. Samples 
+are coloured on the basis of their experimental class. The user can 
+modify the components to be analysed on the plots, while other 
+statistics are available in the result form, such as Q residuals, T2 
+Hotelling, leverages, y calculated/predicted classes. All plots can be exported as MATLAB figures. In the following plot, the score  plot between the first two latent variables is shown. By selecting a reference class from the menu &quot;class potential&quot;, one can highlight the class potential, which is defined on the basis of the distribution of the class samples in the visualised plot, as shown in the following figure for the first two latent variables of the PLSDA mode for the red class (toxic samples).<BR> <BR>
+<center>
+  <img src="example_plsda_07.gif"><BR>
+  </center>
+  			Finally, we can have a look to the PLSDA loadings, by choosing &quot;results-&gt;PLSDA results-&gt;loadings&quot;.<a href="gui_results.htm#sub_2b" class="lnk_text"> A form will appear</a>. In this form, results related to variables can be plotted. In the following plot, the loading  plot between the first two latent variables and the PLSDA coefficients for the toxic class are shown.
+  			<center>
+  <BR>
+  <img src="example_plsda_08.gif"><BR>
+  <BR>
+  <img src="example_plsda_09.gif"><BR>
+  </center>
+			Finally, we can save the model (&quot;file-&gt;save model&quot;), clear the data (&quot;file-&gt;clear data&quot;), and load the test set (&quot;file-&gt;load data&quot; and choose Xtest_log) and the corresponding class vector (&quot;file-&gt;load class&quot; and choose class_test_string). Then, we can choose &quot;predict samples&quot;  in the <a href="gui_predict.htm" class="lnk_text">predict menu</a>; the prediction results on the new set of data will be available. The classification results on the test set can be analysed by choosing &quot;prediction-&gt;classification measures&quot;, while analyses of the test samples  in the model space can be performed by clicking &quot;predict-&gt;projection of predicted samples&quot;.<BR>
+			<BR>[<a href="#top" class="lnk_text">-> top</a>]<BR>
+		    <BR><a name="sub_1" id="sub_0"></a>
+		    <BR>
+		    
+		<span class="title_paragraph">Working with the command line</span><BR>
+		    <BR>
+			Type:<BR>
+		    <BR>
+			
+			<div id="tab_duo_text" class="text_math">
+		      load sediment </div>
+			<BR>
+
+		    on the MATLAB command window to load the data.			We can select the number of optimal components by using the plsdacompsel function:
+			<BR>
+		    <BR>
+			
+			<div id="tab_duo_text" class="text_math">
+		      res = plsdacompsel(Xtrain_log_log,class_train,'none','vene',5,'bayes')</div>
+			<BR>  
+			We'll get the error rate in  validation (and non-error rate in  validation) associated to each component value. Type <BR>
+            <BR>
+            <div id="tab_duo_text" class="text_math"> res.er</div>
+            <BR>
+on the MATLAB command window to see the error rates. We can then calculate the PLSDA model with 2 components by typing: <BR>
+<BR>
+<div id="tab_duo_text" class="text_math"> model = plsdafit(Xtrain_log,class_train,2,'none','bayes',1)</div>
+<BR>
+on the MATLAB command window. Once the model is calculated, we can see the model performances by typing: <BR>
+		    <BR>
+			
+			<div id="tab_duo_text" class="text_math">
+			model.class_param</div>
+					<BR>
+		    Scores, loadings, calculated class, leverages and many other statistics are stored in the model structure. We can proceed by cross validating (with 5 venetian blind groups) the PLSDA model with 2 components: <BR>
+		    <BR>
+			
+			<div id="tab_duo_text" class="text_math">
+		      cv = plsdacv(Xtrain_log,class_train,2,'none','vene',5,'bayes')</div>
+			<BR>
+Once the  validation procedure has finished, we can see the  validation performances by typing: <BR>
+<BR>
+<div id="tab_duo_text" class="text_math"> cv.class_param</div>
+<BR>
+Finally, we can predict the test set samples by using the calibrated model: <BR>
+<BR>
+<div id="tab_duo_text" class="text_math"> pred = plsdapred(Xtest_log,model)</div>
+<BR>
+and finally we can calculate the classification performances on the external test set predictions:<BR>
+<BR>
+<div id="tab_duo_text" class="text_math"> class_param = calc_class_param(pred.class_pred,class_test)</div>
+
+		    <BR>
+			[<a href="#top" class="lnk_text">-> top</a>]
+			<BR>
+			<BR>
+			<BR>&nbsp;  	     
+		 </div>
+  
+		  </div></td>
+  		</tr>
+	  </table>
+
+    </div>
+
+    <div id="footer">
+		<iframe src="footer.htm" width="700" height="13" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+	</div>
+</div>
+</body>
+</html>

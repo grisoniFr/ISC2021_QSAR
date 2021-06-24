@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Classification toolbox for MATLAB</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta name="generator" content="HAPedit 3.0">
+
+<link href = "style_structure.css" rel="stylesheet" type="text/css">
+<link href = "style_text.css" rel="stylesheet" type="text/css">
+<link href = "style_tables.css" rel="stylesheet" type="text/css">
+
+<style type="text/css">
+<!--
+.style2 {color: #FF0000}
+-->
+</style>
+</head>
+<body>
+<div id="container">
+<a name="top"></a>
+
+    <div id="header">
+		<iframe src="header.htm" width="740" height="60" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+    </div>
+
+    <div id="content">
+
+		<table width="740" border="0" cellpadding="0" cellspacing="0">
+  		<tr>
+		<td width="150" valign="top">
+		
+		<iframe src="menu_lateral.htm" width="135" height="360" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+		
+		</td>
+
+    	<td valign="top">
+
+		  <div align="justify">
+		    <div id="tab_duo_contenitor" class="text">
+		    <span class="title_page">Using the GUI -&gt; results menu</span> 		
+		    <BR>
+		    <BR>
+    
+		<div id="tab_duo_text">
+		      <div id="tab_space_lateral"><a href="#sub_1" class="lnk_text">Classification performances </a></div>
+			  <div id="tab_space_lateral"><a href="#sub_1b" class="lnk_text">Class boundaries </a></div>
+			  <div id="tab_space_lateral"><a href="#sub_2c" class="lnk_text">Results related to samples </a> </div>
+			  <div id="tab_space_lateral"><a href="#sub_2b" class="lnk_text">Results related to variables </a> </div>
+		      <div id="tab_space_lateral"><a href="#sub_2" class="lnk_text">Discriminant Analysis results </a> </div>
+			  <div id="tab_space_lateral"><a href="#sub_3" class="lnk_text">Partial Least Square - Discriminant Analysis (PLSDA) results </a></div>
+		      <div id="tab_space_lateral"><a href="#sub_4" class="lnk_text">Classification Trees (CART) results</a></div>	
+			  <div id="tab_space_lateral"><a href="#sub_5a" class="lnk_text">Potential Functions (Kernel Density Estimators) results</a></div>
+			  <div id="tab_space_lateral"><a href="#sub_5b" class="lnk_text">Support Vector Machines (SVM) results</a></div>
+			  <div id="tab_space_lateral"><a href="#sub_5" class="lnk_text">Soft Independent Modeling of Class Analogy (SIMCA) results)</a></div>   
+			  <div id="tab_space_lateral"><a href="#sub_6" class="lnk_text">Unequal class models (UNEQ)</a></div>	
+	   	</div><BR>
+<a name="sub_1"></a>
+	          <BR>
+		        
+		        <span class="title_paragraph">Classification performances</span><BR>
+	          <BR>
+	          It is possible to analyse the classification performances of the calculated model by clicking &quot;results-&gt;classification measures &quot;. The following form will appear:<BR>
+              <BR>
+              <center>
+                <img src="gui_3.gif">                              
+              </center>
+              <BR>
+Error rate, non-error rate, accuracy and the ratio of not assigned samples (when higher than 0) are shown both in fitting (all the samples used to build the model) and validation. Specificity (spec), sensitivity (sens), precision (prec) are shown for each modelled class (<a href="classparameters.htm" class="lnk_text">look here</a> for further information on these classification measures). <BR>
+The buttons &quot;view confusion matrix&quot;, &quot;view predicted class&quot; and &quot;view class measures&quot; open new variables in the MATLAB workspace with the corresponding values: confusion matrices calculated in fitting and cross validation; predicted class in fitting and cross validation; class measures, such as sensitivity, specificity and precision (in fitting and cross validation). <BR>
+	          <BR>
+		      [<a href="#top" class="lnk_text">-> top</a>]
+	          <BR>
+	          <BR>
+              <a name="sub_1b" id="sub_1b"></a> <BR>
+              <span class="title_paragraph">Class boundaries </span><BR>
+              <BR>
+It is possible  to visualize class boundaries only when the dataset has 2-dimensions or when models are calculated on two principal components / latent variables. In this case, the &quot;class boundaries&quot; menu is active; it opens a 2 dimensional plot with training samples coloured on the basis of their experimental class and the corresponding class boundaries.<BR>
+<BR>
+[<a href="#top" class="lnk_text">-> top</a>] <BR>
+<BR>
+<a name="sub_2c" id="sub_2c"></a> <BR>
+<span class="title_paragraph">Results related to samples</span><BR>
+<BR>
+Results related to samples (such as scores, probability of classification, Q residuals and T2 Hotelling, etc...) are visualised in a form, where the user can select what to plot by means of specific  menus (&quot;x axis&quot; and &quot;y axis&quot;). Samples are coloured on the basis of their experimental class. Plots can be exported as MATLAB figures (&quot;export plot&quot; button). Legend, sample labels and convex hulls of classes can be added to the plots with the corresponding check boxes. <BR>
+By selecting a reference class from the menu &quot;class potential&quot;, one can highlight the class potential, which is defined on the basis of a gaussian kernel calculated with the distribution of the class samples in the visualised plot, as shown in the following figure for the first two latent variables of a PLSDA mode for the red class.<BR>
+<BR>
+<center>
+  <img src="gui_7.gif" width="500" height="339">
+</center>
+<BR>
+The &quot;view sample&quot; button enables the user to select a specific point in the score plot: profiles of the values of the raw or scaled variables of the selected sample, Q residuals contributions and Hotelling T2 contributions (raw or normalised) will appear in a new window, as shown in the following figure. Normalised Q residuals contributions and Hotelling T2 contributions are calculated on the basis of the <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/1099-128X(200009/12)14:5/6%3C725::AID-CEM611%3E3.0.CO;2-8" target="_blank" class="lnk_text">following scientific paper</a>: A.K. Conlin, E.B. Martin, A.J. Morris, Confidence limits for contribution plots, Journal Of Chemometrics, 2000; 14: 725&ndash;736.<BR>
+<BR>
+<center>
+  <img src="gui_8.gif" width="500" height="470">
+</center>
+<BR>
+[<a href="#top" class="lnk_text">-> top</a>] <BR>
+<BR>
+<a name="sub_2b" id="sub_2b"></a> <BR>
+<span class="title_paragraph">Results related to variables </span><BR>
+<BR>
+ Results related to variables (such as coefficients and loadings) are visualised in a form, where the user can select what to plot by means of specific  menus (&quot;x axis&quot; and &quot;y axis&quot;). Plots can be exported as MATLAB figures (&quot;export plot&quot; button). Variable labels can be added to the plots with the corresponding check box. <BR>
+ <BR>
+ <center>
+   <img src="gui_9.gif" width="500" height="375">
+  </center>
+  
+<BR>
+[<a href="#top" class="lnk_text">-> top</a>] <BR>
+<BR> 
+
+	          <a name="sub_2" id="sub_2"></a>
+	          <BR>
+		        
+	          <span class="title_paragraph">Discriminant Analysis results </span>
+	          <BR>
+	          <BR>
+	          Scores and loadings of canonical variables associated to Linear Discriminant Analysis can be analysed by selecting &quot;results-&gt;DA results-&gt;scores on canonical variables&quot; and &quot;results-&gt;DA results-&gt;loadings on canonical variables&quot;, respectively (note that if Quadratic Discriminant Analysis is calculated, this option is not available). These will open new forms where details of the calculated DA model can be analysed. <BR>
+	          In particular, the <a href="#sub_2c" class="lnk_text">sample (score) plot</a> will enable the user to analyse probabilities of classification for each sample and scores on the canonical variables. <BR>
+	          The <a href="#sub_2b" class="lnk_text">variable (loading)  plot</a> will enable the user to analyse loadings and standardised loadings on the canonical variables. <BR>
+	          If Discriminant Analysis is calculated on the PC scores (PCA-DA), the PCA scores and loadings can be analysed (&quot;results-&gt;DA results-&gt;PCA-DA scores&quot; and &quot;results-&gt;DA results-&gt;PCA-DA loadings&quot;). These will enable the user to analyse <a href="#sub_2c" class="lnk_text">scores</a> and <a href="#sub_2b" class="lnk_text">loadings</a> of the PCs, as well as  Q residuals and T2 Hotelling. Finally, eigenvalues and explained variances of the selected principal components can be visualised by clicking &quot;results-&gt;DA results-&gt;PCA-DA variances &quot;<BR>
+	          <BR>
+	          [<a href="#top" class="lnk_text">-> top</a>] <BR>
+              <BR>
+              <a name="sub_3" id="sub_3"></a> <BR>
+              <span class="title_paragraph">Partial Least Square - Discriminant Analysis results </span><BR>
+              <BR>
+              <span>
+Scores and loadings of latent variables associated to PLSDA can be analysed by selecting "results->PLSDA results->scores" and "results->PLSDA results->loadings", respectively. These will open new forms where details of the calculated PLSDA model can be analysed. 
+<BR>
+In particular, the <a href="#sub_2c" class="lnk_text">sample (score) plot</a> will enable the user to analyse probabilities of classification for each sample, scores on the latent variables, Q residuals, T2 Hotelling, leverages, y calculated/predicted classes. <BR>
+	          The <a href="#sub_2b" class="lnk_text">variable (loading)  plot</a> will enable the user to analyse coefficients, loadings and weights of variables. <BR>
+	          The &quot;results-&gt;PLSDA results-&gt;ROC curves&quot; will open a plot with the <a href="classparameters.htm" class="lnk_text">ROC curve</a> of each class and the plot of sensitivity and specificity as a function of the classification threshold. <BR>Finally, eigenvalues and explained variances of the selected latent variables can be visualised by clicking &quot;results-&gt;PLSDA results-&gt;variances&quot;.<BR>
+<BR>
+[<a href="#top" class="lnk_text">-> top</a>] <BR>
+<BR>
+<a name="sub_4" id="sub_4"></a> <BR>
+<span class="title_paragraph">Classification Trees (CART) results </span><BR>
+<BR>
+The classification tree calculated by CART can be analysed by selecting &quot;results-&gt;CART tree&quot;.<BR>
+<BR>
+
+[<a href="#top" class="lnk_text">-> top</a>] <BR>
+<BR>
+<a name="sub_5a" id="sub_5a"></a> <BR>
+<span class="title_paragraph">Potential Functions (Kernel Density Estimators) results </span><BR>
+<BR>
+Potential Functions results can be analysed by selecting &quot;results-&gt;Potential Function results&quot;. A <a href="#sub_2c" class="lnk_text">form with results related to samples</a> will appear. Here, potentials for each class can be visualised. <BR>
+<BR>
+[<a href="#top" class="lnk_text">-> top</a>] <BR>
+<BR>
+<a name="sub_5b" id="sub_5b"></a> <BR>
+<span class="title_paragraph">Support Vector Machines (SVM)  results </span><BR>
+<BR>
+SVM results can be analysed by selecting &quot;results-&gt;SVM&quot;. A <a href="#sub_2c" class="lnk_text">form with results related to samples</a> will appear. The user can thus plot probability of classification, alpha values and distances of samples from the class boundary.<BR>
+<BR>
+[<a href="#top" class="lnk_text">-> top</a>] <BR>
+
+<BR>
+<a name="sub_5" id="sub_5"></a> <BR>
+<span class="title_paragraph">Soft Independent Modeling of Class Analogy (SIMCA) results </span><BR>
+<BR>
+Scores and loadings of principal components associated to SIMCA can be analysed by selecting "results->SIMCA results->scores" and "results->SIMCA results->loadings", respectively. These will open new forms where details of the calculated SIMCA model can be analysed. 
+<BR>
+In particular, the <a href="#sub_2c" class="lnk_text">sample (score) plot</a> will enable the user to analyse scores, Q residuals, T2 Hotelling, and normalised distances for each class model. <BR>
+	          The <a href="#sub_2b" class="lnk_text">variable (loading)  plot</a> will enable the user to analyse loadings of variables for each class model. <BR>
+	          The &quot;results-&gt;SIMCA results-&gt;ROC curves&quot; will open a plot with the <a href="classparameters.htm" class="lnk_text">ROC curve</a> of each class and the plot of sensitivity and specificity as a function of the classification threshold. <BR>Finally, eigenvalues and explained variances of the selected principal components can be visualised, for each class model, by clicking &quot;results-&gt;SIMCA results-&gt;variances&quot;.<BR>
+<BR>
+[<a href="#top" class="lnk_text">-> top</a>] <BR>
+<BR>
+<a name="sub_6" id="sub_6"></a> <BR>
+<span class="title_paragraph">Unequal class models (UNEQ) results </span><BR>
+<BR>
+Scores and loadings of principal components associated to UNEQ can be analysed by selecting "results->UNEQ results->scores" and "results->UNEQ results->loadings", respectively. These will open new forms where details of the calculated UNEQ model can be analysed. 
+<BR>
+In particular, the <a href="#sub_2c" class="lnk_text">sample (score) plot</a> will enable the user to analyse scores and normalised T2 Hotelling for each class model. <BR>
+	          The <a href="#sub_2b" class="lnk_text">variable (loading)  plot</a> will enable the user to analyse loadings of variables for each class model. <BR>
+	          The &quot;results-&gt;UNEQ results-&gt;ROC curves&quot; will open a plot with the <a href="classparameters.htm" class="lnk_text">ROC curve</a> of each class and the plot of sensitivity and specificity as a function of the classification threshold. <BR>Finally, eigenvalues and explained variances of the selected principal components can be visualised, for each class model, by clicking &quot;results-&gt;UNEQ results-&gt;variances&quot;.<BR>
+
+<BR>
+[<a href="#top" class="lnk_text">-> top</a>] <BR>
+<BR>
+<BR>&nbsp;
+                <center><div class="text"></div>
+              </center>
+          </div></td>
+  		</tr>
+	  </table>
+
+    </div>
+
+    <div id="footer">
+		<iframe src="footer.htm" width="700" height="13" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+	</div>
+</div>
+</body>
+</html>

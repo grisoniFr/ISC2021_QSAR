@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Classification toolbox for MATLAB</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta name="generator" content="HAPedit 3.0">
+
+<link href = "style_structure.css" rel="stylesheet" type="text/css">
+<link href = "style_text.css" rel="stylesheet" type="text/css">
+<link href = "style_tables.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<div id="container">
+<a name="top"></a>
+
+    <div id="header">
+		<iframe src="header.htm" width="740" height="60" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+    </div>
+
+    <div id="content">
+
+		<table width="740" border="0" cellpadding="0" cellspacing="0">
+  		<tr>
+		<td width="150" valign="top">
+		
+		<iframe src="menu_lateral.htm" width="135" height="360" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+		
+		</td>
+
+    	<td valign="top">
+
+		  <div align="justify">
+		    <div id="tab_duo_contenitor" class="text">
+		    <span class="title_page">Theory</span>		
+		    <BR>
+		    <BR>
+    
+		<div id="tab_duo_text">
+              <div id="tab_space_lateral"><a href="#sub_0" class="lnk_text">Classification (supervised pattern recognition)</a></div>
+			  <div id="tab_space_lateral"><a href="#sub_1" class="lnk_text">Discriminant Analysis</a></div>
+		      <div id="tab_space_lateral"><a href="#sub_2" class="lnk_text">Partial Least Square Discriminant Analysis (PLSDA)</a></div>
+		      <div id="tab_space_lateral"><a href="#sub_3" class="lnk_text">Classification trees (CART)</a></div>
+			  <div id="tab_space_lateral"><a href="#sub_4" class="lnk_text">K-Nearest Neighbors (kNN)</a></div>
+			  <div id="tab_space_lateral"><a href="#sub_4a" class="lnk_text">Potential Functions (Kernel Density Estimators)</a></div>
+			  <div id="tab_space_lateral"><a href="#sub_4b" class="lnk_text">Support Vector Machines (SVM)</a></div>
+			  <div id="tab_space_lateral"><a href="#sub_5" class="lnk_text">Soft Independent Modeling of Class Analogy (SIMCA)</a></div>
+			  <div id="tab_space_lateral"><a href="#sub_6" class="lnk_text">Unequal class models (UNEQ)</a></div>
+	   	</div>
+    <BR><a name="sub_1"></a>
+		    <BR>
+		    
+		<span class="title_paragraph">Classification (supervised pattern recognition)</span>
+		    <BR>
+		    <BR>
+		    Classification methods are fundamental chemometric (multivariate) techniques aimed to find mathematical models able to recognize the membership of each sample to its proper class on the basis of a set of measurements. Once a classification model has been obtained, the membership of unknown samples to one of the defined classes can be predicted. In other words, classification methods find mathematical relationships between a set of descriptive variables (e.g. chemical measurements) and a qualitative variable, i.e. the membership to a defined category (class). <BR>An excellent reference to multivariate classification methods is 
+		    The Elements of 
+		    Statistical Learning:
+		    Data Mining, Inference, and Prediction (2009), by Trevor Hastie, Robert Tibshirani
+and	Jerome Friedman (<a href="http://www-stat.stanford.edu/%7Etibs/ElemStatLearn/" target="_blank" class="lnk_text">available on line here</a>). <br>
+		    <BR>
+			[<a href="#top" class="lnk_text">-> top</a>]<BR>
+		<BR><a name="sub_1"></a>
+		    <BR>
+		    
+		<span class="title_paragraph">Discriminant Analysis</span>
+		    <BR>
+		    <BR>
+		    Among traditional classifiers, Discriminant Analysis is probably the most known method (McLachlan G, 1992, Discriminant Analysis and Statistical Pattern Recognition. New York: Wiley) and can be considered the first multivariate classification technique. Nowadays, several statistical software packages include procedures referred to by various names such as Linear Discriminant Analysis and Canonical Variates Analysis. Canonical Variates Analysis (CVA) separates samples into classes by minimizing the within-class variance and maximizing the between-class variance. So, with respect to Principal Component Analysis, the aim of CVA is to find directions (i.e. linear combinations of the original variables) in the data space that maximise the ratio of the between-class to within-class variance, rather than maximising the between-sample variance without taking into account any information on the classes, as PCA does. These directions are called discriminant functions or canonical variates and are in number equal to the number of categories minus one.<BR>
+			Quadratic Discriminant Analysis (QDA) is a probabilistic parametric classification technique and separates the class regions by quadratic boundaries. It makes the assumption that each class has a multivariate normal distribution, while the dispersion  is different in the classes. 
+			A special case, referred to as Linear Discriminant Analysis (LDA), occurs if all the class covariance matrices are assumed to be identical.<BR>
+Details on Discriminant Analysis can be found here: The Elements of Statistical Learning: Data Mining, Inference, and Prediction (2009), by Trevor Hastie, Robert Tibshirani and Jerome Friedman (<a href="http://www-stat.stanford.edu/%7Etibs/ElemStatLearn/" target="_blank" class="lnk_text">available on line here</a>).<br>
+		    <BR>
+			[<a href="#top" class="lnk_text">-> top</a>]
+		    <BR>
+		    <BR> <a name="sub_2"></a>
+		    <BR>
+		    
+		<span class="title_paragraph">Partial Least Square Discriminant Analysis (PLSDA)</span>
+		    <BR>
+		    <BR>
+			Partial Least Square (PLS) was originally designed as a tool for statistical regression and nowadays is one of the most used regression techniques in chemistry. The PLS algorithm has been modified for classification purposes.  Barker and Rayens (Barker M, Rayens WS, 2003, Partial least squares for discrimination. Journal of Chemometrics, 17, 166-73) showed that Partial Least Squares-Discriminant Analysis (PLS-DA) corresponds to the inverse-least-squares approach to LDA and produces essentially the same results but with the noise reduction and variable selection advantages of PLS. <br>
+			PLS-DA is essentially based on the PLS2 algorithm that searches for latent variables with a maximum covariance with the Y-variables. Of course, the main difference is related to the dependent variables, since these represent qualitative (and not quantitative) values, when dealing with classification. In PLS-DA the Y-block describes which samples are in the classes of interest. When dealing with G classes, the class vector is unfolded and the PLS2 algorithm is applied. For each sample, PLS-DA will return the prediction as a vector of size G, with values in-between 0 and 1: a g-th value closer to zero indicates that the sample does not belong to the g-th class, while a value closer to one the opposite. Since predicted vectors will not have the form (0,0,&hellip;,1,&hellip;0) but  values in the range between 0 and 1, a classification rule must be applied; from predicted values, class thresholds and probabilities can be estimated, as explained in the following publication: N.F. P&eacute;rez, J. Ferr&eacute;, R. Boqu&eacute;, Calculation of the reliability of classification in discriminant partial least-squares binary classification. Chemometrics and Intelligent Laboratory Systems 95 (2013) 122-128. The sample can thus be assigned to the class with the maximum probability or, alternatively, a threshold on calculated responses  can be determined for each class on the basis of the Bayes theorem (the class threshold is  selected at the point where the number of false positives and false negatives is minimized).<BR>
+			The optimal number of latent variable is usually selected by means of cross validation procedures, by choosing the latent variables which minimise the cross validation error in classification.<BR>
+			A tutorial on PLSDA is available in the <a href="http://pubs.rsc.org/en/content/articlelanding/2013/ay/c3ay40582f#%21divAbstract" target="_blank" class="lnk_text">following paper</a>: Ballabio D, Consonni V, (2013) Classification tools in chemistry. Part 1: Linear models. PLS-DA. Analytical Methods, 5, 3790-3798.<BR>
+			Details on the calculation of class thresholds and probabilities is described in the <a href="https://www.sciencedirect.com/science/article/pii/S0169743908001901" target="_blank" class="lnk_text">following paper</a>: N.F. P&eacute;rez, J. Ferr&eacute;, R. Boqu&eacute;, Calculation of the reliability of classification in discriminant partial least-squares binary classification. Chemometrics and Intelligent Laboratory Systems 95 (2013) 122-128.<br>
+			<BR>
+			[<a href="#top" class="lnk_text">-> top</a>]		    
+    		    <BR>
+		        <BR>
+		        <a name="sub_3"></a>
+		        <BR>
+		    
+		        <span class="title_paragraph">Classification trees (CART)</span>
+		        <BR>
+		        <BR>
+			Tree-based approaches  consist of algorithms based on rule induction, that is a way of partitioning the data space into different class subspaces. Basically, the data set is recursively splitted into smaller subsets where each subset contains samples belonging to as few categories as possible. In each split (node), the partitioning is performed in such a way to reduce entropy (maximize purity) of the new subsets and the final classification model consists of a collection of nodes (tree) that define the classification rule.<br>
+			Univariate and multivariate strategies for finding the best split can be distinguished; in the univariate approach the algorithm searches at each binary partitioning the single variable that gives the purest subsets; the partitioning can be formulated as a binary rule: all the samples that satisfy the rule are grouped in one subset, otherwise into another. This is the case of the Classification And Regression Trees (CART), that are a form of binary recursive partitioning based on univariate rule induction. <BR>
+			Reference: Breiman LJ, Friedman JH, Olsen R, Stone C, 1984, Classification and Regression Trees. Belmont, CA: Wadsworth International Group, Inc. or The Elements of Statistical Learning: Data Mining, Inference, and Prediction (2009), by Trevor Hastie, Robert Tibshirani and Jerome Friedman (<a href="http://www-stat.stanford.edu/%7Etibs/ElemStatLearn/" target="_blank" class="lnk_text">available on line here</a>).<BR>
+		    <BR>
+			[<a href="#top" class="lnk_text">-> top</a>]
+			<BR>
+			<BR>
+			
+			<a name="sub_4" id="sub_4"></a> <BR>
+            <span class="title_paragraph">K-Nearest Neighbors (kNN)</span><BR>
+            <BR>
+            The K-Nearest Neighbor (KNN) classification rule (Cover TM, Hart PE, 1967, Nearest neighbor pattern classification. IEEE Transactions on Information Theory, 13, 21-7.) is conceptually quite simple: an sample is classified according to the classes of the K closest samples, i.e. it is classified according to the majority of its k-nearest neighbors in the data space. In a computational point of view, all that is necessary is to calculate and analyse a distance matrix. The distance of each sample from all the other samples is computed, and the samples are then sorted according to this distance.  KNN is a non-linear classification method. Because of these characteristics, KNN has been suggested as a standard comparative method for more sophisticated classification techniques.<br>
+            When applying KNN, the optimal value of K must be searched for. One option for selecting K is by means of cross validation procedures, i.e. by testing a set of K values (e.g. from 1 to 10); then, the K giving the lowest classification error in cross-validation can be selected as the optimal one.<br>
+            <BR>
+[<a href="#top" class="lnk_text">-> top</a>]<BR>
+
+<BR>
+
+<a name="sub_4a" id="sub_4a"></a> <BR>
+            <span class="title_paragraph">Potential Functions (Kernel Density Estimators)</span><BR>
+            <BR>
+            Potential Functions consider each sample of the training set as a point in the pattern space. Around this point there is a potential field, that decreases with distance from the sample (D. Coomans, D.L. Massart, Potential Methods in pattern recognition. Part 1. Classification Aspects of the Supervised Method ALLOC. Analytica Chimica Acta, 133 (1981) 215-224). The classification of a new sample  into one of the 
+classes is determined by means of the cumulative potential of the  class  in the position of the test sample. The cumulative potential is obtained by summing up the individual potentials of the class samples. The test object is then classified into the class which gives rise to the largest cumulative potential.<BR>
+Potential functions can be adapted to class modeling. For each class potential a potential threshold can be defined on the basis of the percentiles of the distribution of class potentials (M. Forina, C. Armanino, R. Leardi, G. Drava, A class-modelling technique based on potential functions, Journal of Chemometrics, 5 (1991) 435-453). A sample is therefore classified in a specific class space if its potential is higher than the potential class threshold. <BR>
+ The shape of the potential field depends on the choice of a potential function (kernel) and a smoothing parameter. Kernels included in this toolbox are: gaussian and triangular. The optimal smoothing value can be selected (for each class) by means of cross validation procedures, i.e. by testing a set of smoothing values (e.g. from 0.1 to 1.2); then, the smoothing value giving the lowest classification error in cross-validation can be selected as the optimal one.<br>
+            Details on potential functions as implemented in the toolbox <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/cem.1180050504" target="_blank" class="lnk_text">can be found in the following paper</a>: M. Forina, C. Armanino, R. Leardi, G. Drava, A class-modelling technique based on potential functions, Journal of Chemometrics, 5 (1991) 435-453<BR>
+            <BR>
+[<a href="#top" class="lnk_text">-> top</a>]<BR>
+
+<BR>
+			
+            <a name="sub_4b" id="sub_4b"></a> <BR>
+            <span class="title_paragraph">Support Vector Machines  (SVM)</span><BR>
+            <BR>
+            Support Vector Machines (SVM) define a decision boundary that optimally separates two classes by maximizing the distance between them (Cortes, C.; Vapnik, V. Support-Vector Networks. In Machine Learning; 1995; pp. 273&ndash;297.). The decision boundary can be described as an hyper-plane that is expressed in terms of a linear combination of functions parameterized by support vectors, which consist in a subset of training molecules. SVM algorithms search for the support vectors that give the best separating hyper-plane using a kernel function. Kernels included in this toolbox are: linear, radial basis functions (RBF) and polynomial. During optimization, SVM search the decision boundary with maximal margin (cost, upper bound for the coefficients alpha) among all possible hyper-planes, where the margin can be intended as the distance between the hyper-plane and the closest point for both classes.<br>
+            When applying SVM, the optimal value of cost must be searched for. One option for selecting the optimal cost value is by means of cross validation procedures, i.e. by testing a set of cost values (e.g. from 0.1 to 1000); then, the cost value giving the lowest classification error in cross-validation can be selected as the optimal one. When dealing with RBF and polynomial  kernels, the kernel parameter must be selected too. In this case, a set of values of kernel parameters is tested in cross validation and the value giving the lowest error in classification can be selected as the optimal one.<BR>
+Details on SVM can be found here: The Elements of Statistical Learning: Data Mining, Inference, and Prediction (2009), by Trevor Hastie, Robert Tibshirani and Jerome Friedman (<a href="http://www-stat.stanford.edu/%7Etibs/ElemStatLearn/" target="_blank" class="lnk_text">available on line here</a>).<br>
+            <BR>
+[<a href="#top" class="lnk_text">-> top</a>]<BR>
+
+<BR>
+<a name="sub_5" id="sub_5"></a> <BR>
+<span class="title_paragraph">Soft Independent Modeling of Class Analogy (SIMCA)</span><BR>
+<BR>
+Soft Independent Modeling of Class Analogy (SIMCA) is a class modeling technique (Wold S (1976) Pattern recognition by means of disjoint principal components models. Pattern Recognition, 8, 127-39). A SIMCA model consists of a collection of Principal Component Analysis (PCA) models, one for each class. Therefore, PCA is separately calculated on the samples of each class; since the number of significant components can be different for each category, cross-validation has been proposed as a way of choosing the number of retained components of each class model. In this way, SIMCA defines G class models, where G is the total number of classes. Then, a new sample is projected in each subspace and compared to it in order to assess its distance from each class. Distances are calculated on the basis of normalised Q residuals and normalised Hotelling T2 values. Q residuals and  Hotelling T2 are normalised over their 95% confidence limits. Samples can be assigned to the class with normalised Q residuals and T2 Hotelling distance lower than a fixed threshold. The distance threshold is found for each class by increasing the threshold and maximizing class specificity and sensitivity. In this way (class modelling approach) samples could be predicted in none or multiple class spaces. Otherwise, samples can be always assigned to the closest class, i.e. the class with the lowest normalised  Q residuals and T2 Hotelling distance. <BR>
+A tutorial on PCA (which is the basis for UNEQ) <a href="http://pubs.rsc.org/en/content/articlehtml/2014/ay/c3ay41907j" target="_blank" class="lnk_text">can be found here</a>: R. Bro, A.K. Smilde, Principal component analysis, Analytical Methods, 2014,6, 2812-2831. An excellent review on class modeling methods <a href="https://onlinelibrary.wiley.com/doi/epdf/10.1002/cem.1397" target="_blank" class="lnk_text">can be found here</a>: R.G. Brereton, One-class classifiers. Journal of Chemometrics 25 (2011) 225-246.<br>
+
+<BR>
+[<a href="#top" class="lnk_text">-> top</a>]<BR>
+<BR>
+<a name="sub_6" id="sub_6"></a> <BR>
+<span class="title_paragraph">Unequal class models (UNEQ)</span><BR>
+<BR>
+Unequal class models (UNEQ) is a class modeling technique(M.P. Derde, D.L. Massart, 
+UNEQ: a disjoint modelling technique for pattern recognition based on normal distribution, 
+Anal. Chim. Acta, 184 (1986), pp. 33-51). A UNEQ model consists of a collection of Principal Component Analysis (PCA) models, one for each class. Therefore, PCA is separately calculated on the samples of each class; since the number of significant components can be different for each category, cross-validation has been proposed as a way of choosing the number of retained components of each class model. In this way, UNEQ defines G class models, where G is the total number of classes. Then, a new sample is projected in each subspace and compared to it in order to assess its distance from each class. Distances are calculated on the basis of normalised Hotelling T2 values. Hotelling T2 are normalised over their 95% confidence limits. Samples can be assigned to the class with normalised T2 Hotelling distance lower than a fixed threshold. The distance threshold is found for each class by changing the threshold and maximizing class specificity and sensitivity. In this way (class modelling approach) samples could be predicted in none or multiple class spaces. Otherwise, samples can be always assigned to the closest class, i.e. the class with the lowest normalised T2 Hotelling value. <BR>
+A tutorial on PCA (which is the basis for UNEQ) <a href="http://pubs.rsc.org/en/content/articlehtml/2014/ay/c3ay41907j" target="_blank" class="lnk_text">can be found here</a>: R. Bro, A.K. Smilde, Principal component analysis, Analytical Methods, 2014,6, 2812-2831. A recent paper explaining UNEQ can be <a href="https://www.sciencedirect.com/science/article/pii/S0003267017306050?via=ihub" target="_blank" class="lnk_text">found here</a>: P. Oliveri (2017) Class-modelling in food analytical chemistry: Development, sampling, optimisation and validation issues - A tutorial. Analytica Chimica Acta, 982, 9-19. Finally, an excellent review on class modeling methods <a href="https://onlinelibrary.wiley.com/doi/epdf/10.1002/cem.1397" target="_blank" class="lnk_text">can be found here</a>: R.G. Brereton, One-class classifiers. Journal of Chemometrics 25 (2011) 225-246.<br>
+<br>
+<BR>
+[<a href="#top" class="lnk_text">-> top</a>]<BR>
+<BR>
+<BR>
+
+&nbsp;  	     
+		 </center>
+            </div>
+  
+		  </div></td>
+  		</tr>
+	  </table>
+
+    </div>
+
+    <div id="footer">
+		<iframe src="footer.htm" width="700" height="13" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+	</div>
+</div>
+</body>
+</html>
