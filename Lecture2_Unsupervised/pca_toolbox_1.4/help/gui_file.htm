@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>PCA toolbox for MATLAB</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta name="generator" content="HAPedit 3.0">
+
+<link href = "style_structure.css" rel="stylesheet" type="text/css">
+<link href = "style_text.css" rel="stylesheet" type="text/css">
+<link href = "style_tables.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<div id="container">
+<a name="top"></a>
+
+    <div id="header">
+		<iframe src="header.htm" width="740" height="60" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+    </div>
+
+    <div id="content">
+
+		<table width="740" border="0" cellpadding="0" cellspacing="0">
+  		<tr>
+		<td width="150" valign="top">
+		
+		<iframe src="menu_lateral.htm" width="135" height="340" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+		
+		</td>
+
+    	<td valign="top">
+
+		  <div align="justify">
+		    <div id="tab_duo_contenitor" class="text">
+		    <span class="title_page">Using the GUI -&gt; file menu</span> 		
+		    <BR>
+		    <BR>
+    
+		<div id="tab_duo_text">
+		      <div id="tab_space_lateral"><a href="#sub_1" class="lnk_text">Loading data, models and labels</a></div>
+		      <div id="tab_space_lateral"><a href="#sub_5" class="lnk_text">Saving models and predictions </a></div>
+	   	</div><BR>
+<a name="sub_1"></a>
+	          <BR>
+		        
+		        <span class="title_paragraph">Loading data, models and labels</span><BR>
+	          <BR>
+	          Data and models can be loaded directly from the matlab workspace or from a matlab data file. In order to load data, select  the file menu (&quot;file-&gt;load data&quot;). Class (qualitative) or response (quantitative) vectors can be loaded in order to colour samples in plots. The class vector must have dimensions samples x 1. The class labels can be a) numerical; in this case the class vector is a numerical vector [samples x 1]. If G classes are present, class labels must range from 1 to G (0 values are not allowed); b) strings. In this case, the class vector is a cell array containing the class labels {samples x 1}. In order to load the class/response vector, select  the file menu (&quot;file-&gt;load class&quot; or &quot;file -&gt; load response&quot;). <BR>
+	          Models can  be saved (see next paragraphs) and loaded in the graphical interface: in order to load models select &quot;file-&gt;load models&quot;. Loaded data and models can also be deleted. When loading data, classes and models, an automatic filter will display in the listbox only the allowed matlab variables. <BR>
+	          Sample and variable labels can be loaded from the &quot;file&quot; menu. If so, labels will be stored in the calculated models and will be visualised in the plots. Pay attention: if you wish to visualize labels, these have to be loaded before the model calculation. <BR>
+	          <BR>
+		      [<a href="#top" class="lnk_text">-> top</a>]
+	          <BR>
+	          <BR> 
+
+	          <a name="sub_5"></a>
+	          <BR>
+		        
+	          <span class="title_paragraph">Saving models and predictions </span>
+	          <BR>
+	          <BR>
+             Models can be saved from the file menu (&quot;file-&gt;save models&quot;). The models are saved as structures in the matlab workspace (for further information on the model structure look the help provided in each <a href="routines.htm" class="lnk_text">matlab m file</a>, eg pca_model for PCA, mds_model for MDS and cluster_model for Cluster Analysis). When dealing with PCA, predictions on new samples can be saved also from the file menu.<BR>
+	          <BR>
+	          [<a href="#top" class="lnk_text">-> top</a>] <BR>
+                <BR>
+              <div class="text"></div>
+  
+		  </div></td>
+  		</tr>
+	  </table>
+
+    </div>
+
+    <div id="footer">
+		<iframe src="footer.htm" width="700" height="13" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+	</div>
+</div>
+</body>
+</html>

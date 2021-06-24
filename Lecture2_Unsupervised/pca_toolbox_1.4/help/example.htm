@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>PCA toolbox for MATLAB</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta name="generator" content="HAPedit 3.0">
+
+<link href = "style_structure.css" rel="stylesheet" type="text/css">
+<link href = "style_text.css" rel="stylesheet" type="text/css">
+<link href = "style_tables.css" rel="stylesheet" type="text/css">
+
+<style type="text/css">
+<!--
+.style1 {
+	color: #FF0000;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body>
+<div id="container">
+<a name="top"></a>
+
+    <div id="header">
+		<iframe src="header.htm" width="740" height="60" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+    </div>
+
+    <div id="content">
+
+		<table width="740" border="0" cellpadding="0" cellspacing="0">
+  		<tr>
+		<td width="150" valign="top">
+		
+		<iframe src="menu_lateral.htm" width="135" height="340" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+		
+		</td>
+
+    	<td valign="top">
+
+		  <div align="justify">
+		    <div id="tab_duo_contenitor" class="text">
+		    <span class="title_page">Example</span>		
+		    <BR>
+		    <BR>
+    
+		<div id="tab_duo_text">
+			  <div id="tab_space_lateral"><a href="#sub_0" class="lnk_text">The aquatic toxicity dataset </a></div>
+			  <div id="tab_space_lateral"><a href="#sub_0bis" class="lnk_text">Working with the graphical interface</a></div>
+		      <div id="tab_space_lateral"><a href="#sub_1" class="lnk_text">Working with the command line</a></div>
+	   	</div>
+    <BR><a name="sub_0" id="sub_0"></a>
+		    <BR>
+		    
+		<span class="title_paragraph">The aquatic toxicity dataset</span>
+		    <BR>
+		    <BR>
+		    A QSAR model was developed from a dataset consisting in 545 organic molecules to predict acute aquatic toxicity towards Daphnia Magna. LC50 data, which is the concentration that causes death in 50% of test Daphnia Magna over a test duration of 48 hours, was used as model (quantitative) response. The 545 molecules of the dataset were randomly divided into training (436) and external test sets (109). The dataset included 8 molecular descriptors: TPSA(Tot) (Molecular properties), SAacc (Molecular properties), H-050 (Atom-centred fragments), MLOGP (Molecular properties), RDCHI (Connectivity indices), GATS1p (2D autocorrelations), nN (Constitutional indices), C-040 (Atom-centred fragments). The dataset has been published (and described in details) in the following paper: 
+			<BR>
+            <BR>
+M. Cassotti, D. Ballabio, V. Consonni, A. Mauri, I. Tetko, R. Todeschini (2014). Prediction of acute aquatic toxicity toward daphnia magna using the GA-kNN method, Alternatives to Laboratory Animals (ATLA), 42,31:41 [<a href="http://www.atla.org.uk/prediction-of-acute-aquatic-toxicity-toward-daphnia-magna-by-using-the-ga-knn-method/" target="_blank" class="lnk_text">link</a>] <BR>
+		    <BR>
+            In the following paragraphs, an example of the application of the PCA model built by means of the PCA toolbox for MATLAB is given:<BR><BR>
+            D. Ballabio (2015), A MATLAB toolbox for Principal Component Analysis and unsupervised exploration of data structure, Chemometrics and Intelligent Laboratory Systems, 149 Part B, 1-9 [<a href="https://www.sciencedirect.com/science/article/pii/S0169743915002476" target="_blank" class="lnk_text">link</a>]<BR><BR>The aquatic toxicity dataset is provided together with the toolbox and can be opened by typing:<br>
+            <br>
+            <div id="tab_duo_text" class="text_math"> load data_toxicity </div>
+            <br>
+on the MATLAB command window. In the MATLAB workspace, it will be possible to see the  aquatic toxicity dataset, composed by 545  samples, divided in training (436) and test (109) samples. Each sample is described by 8 variables (molecular descriptors). An experimental quantitative response (LC50) is associated to each sample. Moreover, in order to exemplify the use of the toolbox, samples were divided in two classes: class 1 includes samples with lc50 values lower than 4 (positive), class 2 includes samples with lc50 values higher than 4 (negative).<BR>
+			  <BR>
+			  [<a href="#top" class="lnk_text">-> top</a>]<BR>
+		      <BR>
+		      <a name="sub_0bis" id="sub_0"></a>
+		      <BR>
+		    
+		      <span class="title_paragraph">Working with the graphical interface</span><BR>
+		      <BR>
+		    Once data have been loaded in the MATLAB workspace, you can open the graphical interface by typing the following code in the MATLAB command window: <BR>
+            </p>
+            <div id="tab_duo_text" class="text_math"> pca_gui</div>
+            <BR> 
+            In order to build a PCA model, we have to load data and class vector in the GUI. In order to do that, we can proceed in the following way: select &quot;load data&quot; in the file menu.
+            We can select the X_train matlab variable (the data) and click load. The listbox of the toolbox main form will be updated with the data details (number of samples, number of variables). Then we can follow the same procedure for loading the corresponding response vector (lc50_train), by clicking &quot;load response&quot; in the file menu. Alternatively, we could load the class vector.  Finally, we can load the sample and variable labels (labels_train and labels_variables, by clicking &quot;load labels&quot; in the file menu).<BR>
+			We can have a look to the sample profiles  by choosing &quot;view-&gt;plot profiles&quot;. This will open a new form to show the profiles of the variable averages or the sample profiles, for both the raw and scaled data. If the class vector is loaded,  averages are calculated on each class separately.<BR>
+            <BR><center>
+              <img src="pca_gui2.gif" width="600" height="420">            </center><BR>
+            Otherwise, it is possible to make biplot of variables and/or analyse histograms and boxplots of each variable by selecting &quot;view -&gt; plot univariate stat&quot;.<BR>
+            Initially, we can estimate the <a href="theory.htm" class="lnk_text">optimal number of components</a> to be retained in the model by selecting &quot;calculate-&gt;optimal number of components for PCA&quot;. In the setting form, we can choose the
+ data scaling (autoscaling in this example), the type of cross validation (&quot;vene&quot; for venetian blinds) and the number of cross validation groups (e.g. 5). The following window will appear. <BR><BR>
+            <center>
+              <img src="example_01b.gif" width="550" height="514">
+            </center><BR>
+            Here it is possible to plot <a href="file:///E:/ricerca/matlab/pca_toolbox_1.0/help/theory.htm" class="lnk_text">different parameters</a> (eigenvalues, explained variance, cumulative explained variance, rmsecv, IE and IND) as a function of the PCs included in the model. The number of PCs to be shown in the plot can be changed.  When plotting eigenvalues, two horizontal lines are drawn; these corresponds to the average eigenvalue and to the average eigenvalue multiplied by 0.7; moreover, the number of components suggested by eigenvalue-based methods (AEC, CAEC, KL, KP) are marked and labelled. For example, in this case, AEC, CAEC and KP indices all suggest 3 as the optimal number of components to be retained in the model. <BR>
+            We can then proceed in the calculation of the PCA  model. By selecting the &quot;calculate-&gt;PCA&quot; menu, we can choose the
+ data scaling (autoscaling in this example) and the number of components to be retained in the model (3). After the model calculation, the main form of the toolbox will be updated with the model details (type of calculated model, data scaling, number of retained components, cumulative explained variance). 
+			 The plots of eigenvalues, explained and cumulative variances associated to each component can be analysed by selecting &quot;results-&gt;PCA results-&gt;plot eigenvalues&quot;.<BR>
+			 <BR>
+            <center>
+              <img src="example_02.gif" width="504" height="643">            </center><BR>
+  			Alternatively, eigenvalues can be analysed by selecting &quot;results-&gt;PCA results-&gt;view eigenvalues&quot;). A temporary matlab variable will appear with the list of eigenvalues and the associated explained and cumulative variances. <BR>
+  			We can have a look to the <a href="gui_results.htm" class="lnk_text">PCA scores and loadings</a>, by choosing &quot;results-&gt;PCA results-&gt;scores&quot;. A form will appear with the score plot. In this plot, samples 
+are coloured on the basis of their experimental response (since we initially loaded the response vector). 
+Plots can be exported as MATLAB figures (&quot;export plot&quot; button). Legend, sample labels and convex hulls of classes (if loaded) can be added to the plots with the corresponding check boxes. When classes are loaded, by selecting a reference class from the menu &quot;class potential&quot;, one can highlight the class potential, which is defined on the basis of a gaussian kernel calculated with the distribution of the class samples in the visualised plot. Finally, the &quot;view sample&quot; button enables the user to select a specific point in the score plot: profiles of the values of the raw or scaled variables of the selected sample, Q residuals contributions and Hotelling T2 contributions (raw or normalised) will appear in a new window.<BR>
+In the following figure, the score plot and loading plot (which can be opened by cliking &quot;results-&gt;PCA results-&gt;loadings&quot;) between the first two components are shown.<BR>
+  <center>
+<BR>
+  <img src="example_03.gif" width="554" height="492"><BR>
+  <BR>
+  <img src="example_04.gif" width="554" height="502"><BR>
+  </center>
+			Finally, we can save the model (&quot;file-&gt;save model&quot;), clear the data (&quot;file-&gt;clear data&quot;), and load the test set (&quot;file-&gt;load data&quot; and choose X_test). In this case, the &quot;predict samples&quot; button in the prediction menu will be activated and the prediction results on the new set of data can be analysed. The  scores of the predicted samples (as well as Q residuals and Hotelling T2) can be analysed by choosing &quot;predict-&gt;projection of predicted samples&quot;.<BR>
+			<BR>
+			[<a href="#top" class="lnk_text">-> top</a>]<BR>
+		    <BR><a name="sub_1" id="sub_0"></a>
+		    <BR>
+		    
+		<span class="title_paragraph">Working with the command line</span><BR>
+		    <BR>
+			Type:<BR>
+		    <BR>
+			
+			<div id="tab_duo_text" class="text_math">
+		      load data_toxicity </div>
+			<BR>
+
+		    on the MATLAB command window to load the data.			We can  calculate the PCA model with 4 components on the autoscaled data by typing: <BR>
+<BR>
+<div id="tab_duo_text" class="text_math"> model = pca_model(X_train,4,'auto');</div>
+<BR>
+on the MATLAB command window. The routine output (model) is a MATLAb structure containing all the model details. Once the model is calculated, we can see for example the eigenvalues by typing: <BR>
+		    <BR>
+			
+			<div id="tab_duo_text" class="text_math">
+			model.E</div>
+					<BR>
+		    Cumulative and explained variances can be found in the &quot;exp_var&quot; and &quot;cum_var&quot; fields of the model structure. Scores, loadings, Q residuals, T2 Hotelling are stored in the model structure as well. 
+Type "help pca_model" on the MATLAB command window for further information.<BR>
+Finally, we can project the test  samples in the PCA model by using the calibrated model: <BR>
+<BR>
+<div id="tab_duo_text" class="text_math"> pred = pca_project(X_test,model);</div>
+<BR>
+Scores, Q residuals, Q contributions, T2 Hotelling and T2 Hotelling contributions of the test samples will be saved as fields of the pred structure. Type "help pca_project" on the MATLAB command window for further information.<BR>
+<BR>
+			[<a href="#top" class="lnk_text">-> top</a>]
+			<BR>
+			<BR>
+			<BR>&nbsp;  	     
+		 </div>
+  
+		  </div></td>
+  		</tr>
+	  </table>
+
+    </div>
+
+    <div id="footer">
+		<iframe src="footer.htm" width="700" height="13" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+	</div>
+</div>
+</body>
+</html>

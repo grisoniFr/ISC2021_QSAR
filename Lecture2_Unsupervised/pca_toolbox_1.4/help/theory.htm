@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>PCA toolbox for MATLAB</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta name="generator" content="HAPedit 3.0">
+
+<link href = "style_structure.css" rel="stylesheet" type="text/css">
+<link href = "style_text.css" rel="stylesheet" type="text/css">
+<link href = "style_tables.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<div id="container">
+<a name="top"></a>
+
+    <div id="header">
+		<iframe src="header.htm" width="740" height="60" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+    </div>
+
+    <div id="content">
+
+		<table width="740" border="0" cellpadding="0" cellspacing="0">
+  		<tr>
+		<td width="150" valign="top">
+		
+		<iframe src="menu_lateral.htm" width="135" height="340" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+		
+		</td>
+
+    	<td valign="top">
+
+		  <div align="justify">
+		    <div id="tab_duo_contenitor" class="text">
+		    <span class="title_page">Theory</span>		
+		    <BR>
+		    <BR>
+    
+		<div id="tab_duo_text">
+              <div id="tab_space_lateral"><a href="#sub_0" class="lnk_text">Principal Component Analysis (PCA)</a></div>
+			  <div id="tab_space_lateral"><a href="#sub_0b" class="lnk_text">Optimal number of Principal Components</a></div>
+			  <div id="tab_space_lateral"><a href="#sub_1" class="lnk_text">Cluster Analysis</a></div>
+		      <div id="tab_space_lateral"><a href="#sub_2" class="lnk_text">Multidimensional Scaling (MDS) </a></div>
+	   	</div>
+		    </div>
+		    <div class="text">              <p><BR>
+                <a name="sub_0" id="sub_0"></a>
+		        <BR>
+		      
+		      <span class="title_paragraph">Principal Component Analysis (PCA)</span><BR>
+		        <BR>
+		        Principal Component Analysis (PCA) is a well-known multivariate technique for exploratory data analysis, which projects the data in a reduced hyperspace, defined by orthogonal principal components [Jolliffe IT (1986) Principal Component Analysis. New York: Springer-Verlag; W. J. Krzanowski, Principles of Multivariate Analysis, 1988]. These are linear combinations of the original variables, with the first principal component having the largest variance, the second principal component having the second-largest variance, and so on. Loadings are the variable coefficients in the linear combinations which define the components, while scores represent the coordinates of samples in the principal component space. Tutorials explaining theory and application of PCA can be found in literature.<BR>
+		        An excellent tutorial on PCA and its application is: R. Bro and A. K. Smilde. Principal Component Analysis. Analytical Methods 6:2812-2831, 2014 [<a href="https://pubs.rsc.org/en/content/articlelanding/2014/ay/c3ay41907j#!divAbstract" target="_blank" class="lnk_text">link</a>]. <br>
+		        <BR>
+			  [<a href="#top" class="lnk_text">-> top</a>]<BR>
+		      <BR>
+		      <a name="sub_0b" id="sub_0b"></a> <BR>
+              <span class="title_paragraph">Optimal number of Principal Components</span><BR>
+              <BR>
+  Some methods and criteria to select the optimal number of Principal Components are included in the toolbox. Several methods select the significant Principal Components on the basis of the associated eigenvalues, that is, on the basis of the variance explained by each principal component. Then, the significant components can be selected by looking at a plot of eigenvalues against the number of components, as well as the explained variance or cumulative explained variance associated to each component.<BR>
+  Two simple methods based on eigenvalues are the <em>Average Eigenvalue Criterion</em> (<em>AEC</em>, also known as Kaiser's criterion) and the <em>Corrected Average Eigenvalue Criterion</em> (<em>CAEC</em>) [Kaiser,H.F., 1960. The application of electronic computers to factor analysis, Educational and Psychological Measurement 20, pp. 141-151.]: AEC accepts as significant only the components with eigenvalue larger than the average eigenvalue; CAEC is the same as AEC, but simply decreases the rejection threshold by multiplying the average eigenvalue by 0.7.<BR>
+  Malinowski proposed two eigenvalue-based indices for the selection of a suitable number of components, the <em>Imbedded error</em> (<em>IE</em>) and the <em>Malinowski Indicator Function</em> (<em>IND</em>) [Malinowski, E. R.; Howery, D. G. (1980). Factor Analysis in Chemistry. New York: Wiley.], which are defined  as:<BR>
+  <center><img src="theory_ind_ie.gif">
+  </center>
+  where, <em>p</em> is the number of original variables and <em>M</em> the number of retained  components;<em> l<sub>m</sub></em> is the eigenvalue of the m-th principal component. These indicator functions were specifically proposed to deal with spectroscopic data; they are based on the assumption that the error is random and identically distributed in the data and thus the eigenvalues associated with the residual error of PCA model should be approximately equal. Both <em>IE</em> and <em>IND</em> are calculated as a function of M, as M goes from 1 to p; the minimum of the function indicates the optimal number of retained components.<BR>
+  Another strategy to select significant components is based on the multivariate K correlation index, which is a multivariate approach to quantification of the correlation content of a data matrix [Todeschini,R., 1997. Data correlation, number of significant principal components and shape of molecules. The K correlation index, Anal. Chim. Acta 348, pp. 419-430]. From the K correlation index, a linear function (<em>KL</em>) and a non-linear power function (<em>KP</em>) are derived as follows:<BR>
+  <center><img src="theory_kp_kl.gif" width="235" height="81"></center>
+  where int indicates the nearest integer upper value. As can be observed, both functions equal 1 when K = 1 (all the original p variables are mutually correlated, so one component is retained) and equal p when K = 0 (all the original variables are orthogonal, so all the components are retained). <em>KL</em> gives the maximum number of theoretical significant principal components, under the assumption that the information in the data is linearly distributed, while <em>KP</em> estimates the safest minimum number of significant components under the assumption that the information in the data decreases more steeply.<BR>
+  Finally, another option is to estimate the optimal number of components by means of cross validation procedures [Wise B, Ricker N (1991) In: Najim K, Dufour E (eds) IFAC Symp on Advanced Control of Chemical Processes, Toulouse, France, 14&ndash;16 October 1991, pp 125&ndash;130]. The data set is therefore divided into a number of cross-validation groups. PCA model is then built on all but one of the groups and  used to estimate variables of the left out group. One variable at a time is removed and considered as missing data;  the missing variable is predicted from the 
+  model and the sample observation excluding the one variable [R. Bro, K. Kjeldahl, A. K. Smilde, H. A. L. Kiers, 2008, Cross-validation of component models: A critical look at current methods, Anal Bioanal Chem 390, pp 1241&ndash;1251]. The residuals for this &ldquo;reconstruction&rdquo; is analysed as a function of the number of components used to calculate the PCA model. When PCs describing only small noise variance are added, the error (RMSECV) should increase.<BR>
+  Further details on the selection of Principal Components can be found in the reference paper of the toolbox: 
+D. Ballabio (2015), A MATLAB toolbox for Principal Component Analysis and unsupervised exploration of data structure, Chemometrics and Intelligent Laboratory Systems, 149 Part B, 1-9 [<a href="https://www.sciencedirect.com/science/article/pii/S0169743915002476" target="_blank" class="lnk_text">link</a>]<br>
+   <BR>
+  [<a href="#top" class="lnk_text">-> top</a>]<BR>
+  <BR>
+  <a name="sub_1"></a>
+		      <BR>
+		      
+		    <span class="title_paragraph">Cluster Analysis</span>
+		      <BR>
+		      <BR>
+		      Cluster analysis differs from PCA in that the goal is to detect similarities between objects and find groups in the data on the basis of sample similarities [Massart DL, Kaufman L (1983) The interpretation of analytical chemical data by the use of cluster analysis. New York: Wiley]. Similarities among samples are calculated by means of distances: similar samples are characterised by small distances and the opposite for dissimilar samples. In particular, hierarchical agglomerative methods use the distance measures, called linkage metrics, to quantify  similarities between groups of objects (i.e.,  clusters). Distances are then used to cluster samples in groups and finally display a dendrogram which encodes the cluster structure of the data. <br>
+		      <BR>
+			  [<a href="#top" class="lnk_text">-> top</a>]
+		      <BR>
+		      <BR> 
+		      <a name="sub_2" id="sub_2"></a>
+		      <BR>
+		      
+		    <span class="title_paragraph">Multidimensional Scaling</span>
+		      <BR>
+		      <BR>
+		      Multi-Dimensional Scaling (MDS) is able to elaborate distance (or similarity) matrices representing the internal similarity/diversity relationships of samples [Seber, G. A. F. Multivariate Observations. Hoboken, NJ: John Wiley &amp; Sons, Inc., 1984.]. MDS takes into account the mutual relationships of sample distances by reproducing the data structure encoded in the distance (similarity) matrix into a low-dimensional space. Therefore, a scatter plot of samples in the reduced dimensional space provides a visual representation of the original distances.<br>
+			  <BR>
+			  [<a href="#top" class="lnk_text">-> top</a>]		    
+   		        <BR>
+   		        <BR>
+   		        <BR>
+  
+&nbsp;  	     
+		   </center>
+            </p>
+	        </div>
+	      </div></td>
+  		</tr>
+	  </table>
+
+    </div>
+
+    <div id="footer">
+		<iframe src="footer.htm" width="700" height="13" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+	</div>
+</div>
+</body>
+</html>

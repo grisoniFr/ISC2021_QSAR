@@ -1,0 +1,251 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Regression toolbox for MATLAB</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta name="generator" content="HAPedit 3.0">
+
+<link href = "style_structure.css" rel="stylesheet" type="text/css">
+<link href = "style_text.css" rel="stylesheet" type="text/css">
+<link href = "style_tables.css" rel="stylesheet" type="text/css">
+
+<style type="text/css">
+<!--
+.style1 {
+	color: #FF0000;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body>
+<div id="container">
+<a name="top"></a>
+
+    <div id="header">
+		<iframe src="header.htm" width="740" height="60" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+    </div>
+
+    <div id="content">
+
+		<table width="740" border="0" cellpadding="0" cellspacing="0">
+  		<tr>
+		<td width="150" valign="top">
+		
+		<iframe src="menu_lateral.htm" width="135" height="360" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+		
+		</td>
+
+    	<td valign="top">
+
+		  <div align="justify">
+		    <div id="tab_duo_contenitor" class="text">
+		    <span class="title_page">Example</span>		
+		    <BR>
+		    <BR>
+    
+		<div id="tab_duo_text">
+			  <div id="tab_space_lateral"><a href="#sub_0" class="lnk_text">The Tablets dataset </a></div>
+			  <div id="tab_space_lateral"><a href="#sub_0bis" class="lnk_text">Working with the graphical interface</a></div>
+			  <div id="tab_space_lateral"><a href="#sub_0tris" class="lnk_text">Variable selection</a></div>
+		      <div id="tab_space_lateral"><a href="#sub_1" class="lnk_text">Working with the command line</a></div>
+	   	</div>
+    <BR><a name="sub_0" id="sub_0"></a>
+		    <BR>
+		    
+		<span class="title_paragraph">The Tablets dataset</span>
+		    <BR>
+		    <BR>
+		    In the Tablets dataset a total of 310 pharmaceutical tablets were analyzed with NIR transmittance spectroscopy in the range 7400 &ndash; 10500 cm-1, with a resolution of 16 cm-1. Each tablet was associated to the concentrations of active substance (w/w %).
+		    A total of 31 batches of tablets were analysed; in 19 batches the tablets have 4 different dosage values ( 5, 10, 15, 20 mg) with only two different concentrations of active substance: 5.6% w/w for the 5mg tablets and 8% w/w for the others. Special batches (3 for dosage, 12 in total) were specifically prepared to extend the range of active substance from 85% to 115%. <br>
+		    The original data are available at: 
+		    <a href="http://www.models.life.ku.dk/Tablets" target="_blank" class="lnk_text">http://www.models.life.ku.dk/Tablets</a><br>
+		    The original study, with an extensive description of the sampling and the data structure, is the following: <BR>
+		    <br>
+		    M. Dyrby, S.B. Engelsen, L. N&oslash;rgaard, M. Bruhn and L. Lundsberg Nielsen, 
+		    Chemometric Quantitation of the Active Substance in a Pharmaceutical Tablet Using Near Infrared (NIR) Transmittance and NIR FT Raman Spectra, 
+		    Applied Spectroscopy 56(5): 579 585 (2002) [<a href="https://journals.sagepub.com/doi/10.1366/0003702021955358" target="_blank" class="lnk_text">link</a>] <BR>
+		    <br>
+		    In the following example, we show how to build a PLS model with the Regression toolbox for MATLAB as well as some of its features on this dataset. 
+		    The PLS model is thus intended to have a relationships between NIR spectra and concentrations of active substance. The tablets dataset has been preprocessed accordingly to the authors (second derivative) and randomly divided in a calibration set (about 80% of the samples) and test set (about 20% of the samples). The resulting data are provided together with the toolbox. 
+		    The data can be loaded typing:<br>
+            <br>
+            <div id="tab_duo_text"><span class="text_math"> load tablets </span></div>
+            <br>
+on the MATLAB command window or dragging the data from the folder directly in the command window. <BR>
+			  <BR>
+			  [<a href="#top" class="lnk_text">-> top</a>]<BR>
+		      <BR>
+		      <a name="sub_0bis" id="sub_0"></a>
+		      <BR>
+		    
+		      <span class="title_paragraph">Working with the graphical interface</span><BR>
+		      <BR>
+		    Once data have been loaded in the MATLAB workspace, you can open the graphical interface by typing the following code in the MATLAB command window: <BR>
+            </p>
+            <div id="tab_duo_text"><span class="text_math"> reg_gui</span></div>
+            <BR> 
+            The first thing to do is to load the data in the GUI, clicking &ldquo;file&rdquo; in the upper left corner of the window a menu appear, selecting &lsquo;&rsquo;load data&rsquo;&rsquo; the user can select the data to be loaded, in this case X_Cal. Selecting file it is possible to load in the same way the response (Y_Cal) and the variable and the samples labels (Wavelength and SamplesLabels_Cal respectively). These last two have to be stored in a <a href="gui.htm" class="lnk_text">cell array</a>.<BR>
+            <BR>
+			<center>
+              <img src="example_pls_01.gif" width="552" height="305">            </center>
+			<BR>
+			After  data loading, it is possible to have a look to the variables (view menu  -&gt; plot profiles): in the upper plot the raw data are showed (average or all the samples), in the bottom the scaled data (mean centering in the following figure).<BR>
+			<BR>
+            <center>
+              <img src="example_pls_02.gif" width="550">            
+            </center>
+            <BR>
+            In the same menu, &quot;plot univariate stat&quot; can be used to see the distribution of the data (one variable at a time) or to plot a variable against another or the response, as in the following figure where spectra at wavenumber 8802 are plotted against the response. Samples are coloured in a grey scale according to their experimental response.<BR>
+            <BR>
+            <center>
+              <img src="example_pls_03.gif">            
+            </center><BR>
+            In the &quot;Calculate&quot; menu it is possible to select the desired modeling approach, PLS in this example. Initially, select &quot;optimal components for PLS&quot;  to find out the numbers of components (latent variables) to fit the model. In the window is required to select the scaling  and the <a href="gui_calculate.htm#sub_1" class="lnk_text">cross validation settings</a>. In this example, we used mean centering and venetian blinds with 5 groups. Clicking on the Calculate button a new window will appear. The plot shows the <a href="regrparameters.htm" class="lnk_text">R2cv and RMSE cv</a> as a function of the included latent variables (from 1 to 10). Here 3 or 4 components seems to be the optimal number. <br>
+            <BR>
+			<center>
+			  <img src="example_pls_04.gif">              </center>
+			<BR>
+			Now it is possible to calculate the model selecting &quot;fit PLS&quot;. After all the options are set (4 components, mean centering, venetian blinds, 5 cross validation groups), just click on &quot;calculate&quot; to get your model. The main parameters of the model together with a short resume of the selected settings will appear in the right window of the GUI. <BR> <BR>
+			<center>
+              <img src="example_pls_05.gif" width="352" height="299">            </center><BR>
+			After the model calculation (and validation), the main form of the toolbox will be updated with the model details (type of calculated model, number of latent variables, data scaling, error  in fitting and cross validation). 
+			Detailed classification results can be analysed by clicking &quot;results-&gt;regression measures&quot;. The following form will appear. This shows the <a href="regrparameters.htm" class="lnk_text">regression measures</a> in calibration and cross validation. Eventually the vector with the predictions can be seen, as well as a table with the resume of all regression measures (&quot;view measures&quot;).<BR><BR>
+			<center>
+  		      <img src="example_pls_06.gif" width="322" height="195">            </center>
+			<BR>
+			Tools for analyse model results and its diagnostic can be opened with the &quot;results-&gt;Partial Least Squares&quot; menu. The &quot;Variances&quot; menu shows both the explained variance (%) of each latent variable and the cumulative variance on the X block. 
+  			Then, we can have a look to the PLS scores, by choosing &quot;results-&gt;Partial Least Squares-&gt;scores&quot;.<a href="gui_results.htm#sub_2c" class="lnk_text"> A form will appear</a>. In this form, results related to samples can be plotted. Samples 
+can be coloured on the basis of their experimental response. The user can 
+modify the components to be analysed on the plots, while other 
+statistics are available in the result form, such as residuals, Q residuals, T2 
+Hotelling, leverages, y calculated/predicted. All plots can be exported as MATLAB figures. In the following figure, the experimental vs predicted response is plotted, as well as the plot between standardised residuals and leverages. Here problematic samples can be noted and, going back to the &quot;view&quot; menu, <a href="gui_view.htm#sub_7" class="lnk_text">outliers can be removed</a>. In this case the model should be calculated again following the same procedures as before.<BR> 
+<BR>
+<center>
+  <img src="example_pls_07.gif"><BR>
+  <BR>
+  <center>
+    <img src="example_pls_08.gif" width="514" height="394"><BR>
+  </center>
+  </center>
+  			Anomalous sampels can be analysed by clicking on the &quot;view sample&quot; button in the score window. The selection of one point in the score plot will open a plot with the raw or scaled profile of the selected sampels, as well as normalised Hotelling T2 and Q residuals contributions for that sample.<BR>
+  			<BR>
+            <center>
+              <img src="example_pls_09.gif" width="515" height="642">                          </center>
+            <BR>
+Finally, we can have a look to the PLS loadings and coefficients by choosing &quot;results-&gt;PLSDA results-&gt;loadings&quot;.<a href="gui_results.htm#sub_2b" class="lnk_text"> A form will appear</a>. In this form, results related to variables can be plotted. In the following plot, the loading  plot between the first two latent variables and the PLS standardised coefficients are shown.
+In our example, it is possible to see that the regression coefficients emphasize a specific interval of variables (around 8800 cm-1). 
+<center>
+  <BR>
+  <img src="example_pls_10.gif" width="509" height="403"><BR>
+  <BR>
+  <img src="example_pls_11.gif" width="524" height="401"><BR>
+  </center>
+			Finally, we can save the model (&quot;file-&gt;save model&quot;), clear the data (&quot;file-&gt;clear data&quot;), and load the test set (&quot;file-&gt;load data&quot; and choose Xtest) and the corresponding response vector (&quot;file-&gt;load response&quot; and choose Ytest). Then, we can choose &quot;predict samples&quot;  in the <a href="gui_predict.htm" class="lnk_text">predict menu</a>; the prediction results on the new set of data will be available. The regression measures on the test set can be analysed by choosing &quot;prediction-&gt;regression measures&quot;, while analyses of the test samples  in the model space can be performed by clicking &quot;predict-&gt;projection of predicted samples&quot;. This will open the score window (previously described), with test samples coloured in red. Of course, predictions can be obtained even for new samples with no experimental response. In this case, regression measures (as well as some diagnostic, such as residuals and standardised residuals) can not be calculated.  
+            <center>
+              <BR>
+              <img src="example_pls_12.gif" width="505" height="391">
+            </center>
+  			<BR>[<a href="#top" class="lnk_text">-> top</a>]<BR>
+            <BR>
+            <a name="sub_0tris" id="sub_0"></a> <BR>
+            <span class="title_paragraph">Variable selection</span><BR>
+            <BR>
+It could worth to try and see if a <a href="theory.htm#sub_4b" class="lnk_text">variable selection</a> approach can select that interval of wavenumbers previously commented when looking at the PLS standardised coefficients and if this selection can improve the performance of the model. In order to run a variable selection based on Genetic Algorithms, click on &quot;calculate-&gt;Partial Least Squares-&gt;fit PLS&quot;. Choose &quot;mean centering&quot; as data scaling, venetian blinds with 5 cancellation groups as cross validation method (the number of latent variables is not mandatory, since it will be then selected during the variable selection preocedure) and click &quot;variable selection&quot;. A new  window with settings for variable selection will appear.
+<center>
+  <BR>
+  <img src="example_pls_13.gif" width="352" height="351">
+</center>
+<BR>
+We can set the number of runs (itarations) equal to 100, the maximum number of variables to be selected equal to 10, percentage of samples to be used as test equal to 20% and the number of windows (intervals) equal to 50; this means that variabels will be divided in 50 adijacent intervals (windows) and variable selection will be then performed taking into account these windows. thus we  keep together adjacent wavenumbers that hold the same information. Then click &quot;calculate&quot; to start the GA evolution. A new window will show the progress of the selection. This figure will include two plots; the first plot shows a bar plot representing the frequency of selection of each window, the second plot represents, for each GA run, the R2cv and R2 on test samples achieved by the best model in the GA population. At the end of the evolution, a new window will appear. In this window, a bar plot representing the frequency of selection of each variable in the best model of each GA run is shown. Note that being GA based on random initialisation, these plot can be slightly diferent each time GA are calculated. 
+<center>
+  <BR>
+  <img src="example_pls_14.gif" width="601" height="552">
+</center>
+<BR>
+
+ The user can thus select a frequency threshold; variables associated to frequencies higher than this threshold can then be used for a subsequent forward selection or all subset selection. In this case we can choose a frequency threshold equal to 0.3 and forward selection as subsequent selection. After the subsequent forward selection on the reduced set of variables, a new window will appear. Here a list of models is displayed. 
+ <center>
+   <BR>
+  <img src="example_pls_15.gif" width="560">
+ </center>
+ <BR>
+ For each model, the size, R2, R2cv, RMSE, RMSECV and the labels of selected variables are reported. We can thus select  which model to use with the corresponding combo box. In this case, we select model number 2 (based on 2 windows, which results in 8 wavenumbers). The main window of the GUI will be thus updated with the PLS model based on the selected variables. Then, diagnostic of the model can be analysed, as previuosly described. When predicting a new set of samples with a model based on a set of selected variables, the full set of variables must be loaded, then the toolbox will just use the selected set to make the prediction. Thus, in our example, we should load the full Xtest set of samples (404 wavenumbers), then the PLS model based on the selected variables would use just the selected wavenumbers to make the prediction on the Xtest samples.<BR>
+<BR>
+[<a href="#top" class="lnk_text">-> top</a>] <BR>
+		    <BR><a name="sub_1" id="sub_0"></a>
+		    <BR>
+		    
+		<span class="title_paragraph">Working with the command line</span><BR>
+		    <BR>
+			Type:<BR>
+		    <BR>
+			
+			<div id="tab_duo_text"><span class="text_math">
+		      load tablets </span></div>
+			<BR>
+
+		    on the MATLAB command window to load the data.			We can select the number of optimal latent variables by using the plscompsel function:
+			<BR>
+		    <BR>
+			
+			<div id="tab_duo_text"><span class="text_math">
+		      res = plscompsel(Xcal, Ycal, 'cent','vene',5)</span></div>
+			<BR>  
+			We'll get R2cv and RMSECV  in  validation associated to each latent variable. Type <BR>
+            <BR>
+            <div id="tab_duo_text"><span class="text_math"> res.rmse</span></div>
+            <BR>
+on the MATLAB command window to see the RMSE values. We can then calculate the PLS model with 4 latent variables (which minimise RMSECV) by typing: <BR>
+<BR>
+<div id="tab_duo_text"><span class="text_math"> model = plsfit(Xcal, Ycal, 4, 'cent')</span></div>
+<BR>
+on the MATLAB command window. Once the model is calculated, we can see the model performances by typing: <BR>
+		    <BR>
+			
+			<div id="tab_duo_text"><span class="text_math">
+			model.reg_param</span></div>
+					<BR>
+		    Scores, loadings, calculated response, leverages, Hotelling T2, Q residuals and many other statistics are stored in the model structure. We can proceed by cross validating (with 5 venetian blind groups) the PLS model with 4 components: <BR>
+		    <BR>
+			
+			<div id="tab_duo_text"><span class="text_math">
+		      cv = plscv(Xcal, Ycal, 4, 'cent','vene',5)</span></div>
+			<BR>
+Once the  validation procedure has finished, we can see the  validation performances by typing: <BR>
+<BR>
+<div id="tab_duo_text"><span class="text_math"> cv.reg_param</span></div>
+<BR>
+Finally, we can predict the test set samples by using the calibrated model: <BR>
+<BR>
+<div id="tab_duo_text"><span class="text_math"> pred = plspred(Xtest,model)</span></div>
+<BR>
+and finally we can calculate the regression performances on the external test set predictions:<BR>
+<BR>
+<div id="tab_duo_text"><span class="text_math"> test_performance = calc_external_reg_param(Ycal,Ytest,pred.yc)</span></div>
+
+		    <BR>
+			[<a href="#top" class="lnk_text">-> top</a>]
+			<BR>
+			<BR>
+			<BR>&nbsp;  	     
+		 </div>
+  
+		  </div></td>
+  		</tr>
+	  </table>
+
+    </div>
+
+    <div id="footer">
+		<iframe src="footer.htm" width="700" height="13" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+	</div>
+</div>
+</body>
+</html>

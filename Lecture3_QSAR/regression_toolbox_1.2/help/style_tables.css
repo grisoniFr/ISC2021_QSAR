@@ -1,0 +1,48 @@
+
+#tab_home_contenitor {
+		position:relative;
+		width:530px;
+    	}
+
+#tab_duo_contenitor {
+		position:relative;
+		width:590px;
+    	}
+
+#tab_duo_text {
+		position:relative;
+		background-color: #CCCCCC;
+		text-align:justify;
+		padding-top: 0.3em;
+		padding-bottom: 0.3em;
+		padding-left: 0.4em;
+		padding-right: 0.4em;
+		border-top-width: 1px;
+		border-top-style: solid;
+		border-top-color: #CC3300;
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+		border-bottom-color: #CC3300;
+    	}
+
+#tab_menu_lateral {
+		position:relative;
+		width:135px;
+		background-color: #003366;
+		padding-top: 0.3em;
+		padding-bottom: 0.3em;
+		padding-left: 0.3em;
+		border-top-width: 3px;
+		border-top-style: solid;
+		border-top-color: #CC3300;
+		border-bottom-width: 3px;
+		border-bottom-style: solid;
+		border-bottom-color: #CC3300;
+    	}
+
+#tab_space_lateral {
+		position:relative;
+		padding-top: 0.3em;
+		padding-bottom: 0.3em;
+		text-align:left;
+    	}

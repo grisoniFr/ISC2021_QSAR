@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>PCA toolbox for MATLAB</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta name="generator" content="HAPedit 3.0">
+
+<link href = "style_structure.css" rel="stylesheet" type="text/css">
+<link href = "style_text.css" rel="stylesheet" type="text/css">
+<link href = "style_tables.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<div id="container">
+<a name="top"></a>
+
+    <div id="header">
+		<iframe src="header.htm" width="740" height="60" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+    </div>
+
+    <div id="content">
+
+		<table width="740" border="0" cellpadding="0" cellspacing="0">
+  		<tr>
+		<td width="150" valign="top">
+		
+		<iframe src="menu_lateral.htm" width="135" height="340" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+		
+		</td>
+
+    	<td valign="top">
+
+		  <div align="justify">
+		    <div id="tab_duo_contenitor" class="text">
+		    <span class="title_page">Using the GUI -&gt; results menu</span> 		
+		    <BR>
+		    <BR>
+    
+		<div id="tab_duo_text">
+		      <div id="tab_space_lateral"><a href="#sub_2" class="lnk_text">Principal Component  Analysis results </a> </div>
+			  <div id="tab_space_lateral"><a href="#sub_3" class="lnk_text">Cluster Analysis results </a></div>
+		      <div id="tab_space_lateral"><a href="#sub_4" class="lnk_text">Multidimensional Scaling results</a></div>	
+	   	</div>
+	          <BR> 
+
+	          <a name="sub_2" id="sub_2"></a>
+	          <BR>
+		        
+	          <span class="title_paragraph">Principal Component  Analysis results </span>
+	          <BR>
+	          <BR>
+	          Eigenvalues (as well as explained and cumulative variances) can be analysed or plotted by selecting &quot;results-&gt;PCA results-&gt;view/plot eigenvalues&quot;. PCA scores and loadings can be analysed by selecting &quot;results-&gt;PCA-&gt;results-&gt;scores&quot; and &quot;results-&gt;PCA-&gt;results-&gt;loadings&quot;, respectively. <BR>
+	          Results related to samples (such as scores, Q residuals and T2 Hotelling) are visualised in a form, where the user can select what to plot by means of specific menus (&quot;x axis&quot; and &quot;y axis&quot;). In this plot, samples are coloured on the basis of their experimental class or response (if loaded). Plots can be exported as MATLAB figures (&quot;export plot&quot; button). Legend, sample labels and convex hulls of classes (if loaded) can be added to the plots with the corresponding check boxes. <br>
+	          By selecting a reference class from the menu &quot;class potential&quot;, one can highlight the class potential, which is defined on the basis of a gaussian kernel calculated with the distribution of the class samples in the visualised plot, as shown in the following figure for the first two PC  for the blue class.
+	          <BR>
+	          <BR><center>
+	          <img src="pca_gui4.gif">
+	          </center>
+	          <BR>
+			  The &quot;view sample&quot; button enables the user to select a specific point in the score plot: profiles of the values of the raw or scaled variables of the selected sample, Q residuals contributions and Hotelling T2 contributions (raw or normalised) will appear in a new window, as shown in the following figure. Normalised Q residuals contributions and Hotelling T2 contributions are calculated on the basis of the following scientific paper: A.K. Conlin, E.B. Martin, A.J. Morris, Confidence limits for contribution plots, Journal Of Chemometrics, 2000; 14: 725&ndash;736.
+              <BR>
+	          <BR><center>
+                <img src="pca_gui5.gif" width="550" height="565">              </center>
+	          
+	          <BR>
+	          Loadings are visualised in a form, where the user can select what to plot by means of specific menus (&quot;x axis&quot; and &quot;y axis&quot;). Plots can be exported as MATLAB figures (&quot;export plot&quot; button). Variable labels can be added to the plots with the corresponding check box.<BR><BR><center>
+	          <img src="pca_gui6.gif" width="550" height="400">
+	          </center> 
+	          <BR>
+	          [<a href="#top" class="lnk_text">-> top</a>] <BR>
+              <BR>
+              <a name="sub_3" id="sub_3"></a> <BR>
+              <span class="title_paragraph">Cluster Analysis results </span><BR>
+              <BR>
+             The dendrogram calculated by means of Cluster Analysis can be analysed by selecting &quot;results-&gt;view dendrogram&quot;. A new form will appear. Here it is possible to analyse the dendrogram, set the number of clusters and save the cluster assignations as a vector.<BR>
+<BR>
+[<a href="#top" class="lnk_text">-> top</a>] <BR>
+<BR>
+<a name="sub_4" id="sub_4"></a> <BR>
+<span class="title_paragraph">Multidimensional Scaling results</span><BR>
+<BR>
+MDS coordinates of samples can be analysed by selecting &quot;results-&gt;MDS results-&gt;scores&quot;. A form (<a href="#sub_2" class="lnk_text">as the one where PCA scores are visualised</a>) will appear. In this plot, samples are coloured on the basis of their experimental class or response (if loaded). The user can modify the coordinates to be analysed on the plots. Plots can be exported as MATLAB figures. Finally, the &quot;view sample&quot; button will enable to select a single point on the  plot and subsequently view the raw and scaled variable profiles of the selected sample. <BR>
+<BR>
+
+[<a href="#top" class="lnk_text">-> top</a>]<BR>
+<BR>
+<BR>&nbsp;
+                <center><div class="text"></div>
+              </center>
+          </div></td>
+  		</tr>
+	  </table>
+
+    </div>
+
+    <div id="footer">
+		<iframe src="footer.htm" width="700" height="13" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+	</div>
+</div>
+</body>
+</html>

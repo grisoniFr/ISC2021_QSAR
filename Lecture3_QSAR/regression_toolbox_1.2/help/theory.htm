@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Regression toolbox for MATLAB</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta name="generator" content="HAPedit 3.0">
+
+<link href = "style_structure.css" rel="stylesheet" type="text/css">
+<link href = "style_text.css" rel="stylesheet" type="text/css">
+<link href = "style_tables.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<div id="container">
+<a name="top"></a>
+
+    <div id="header">
+		<iframe src="header.htm" width="740" height="60" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+    </div>
+
+    <div id="content">
+
+		<table width="740" border="0" cellpadding="0" cellspacing="0">
+  		<tr>
+		<td width="150" valign="top">
+		
+		<iframe src="menu_lateral.htm" width="135" height="360" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+		
+		</td>
+
+    	<td valign="top">
+
+		  <div align="justify">
+		    <div id="tab_duo_contenitor" class="text">
+		    <span class="title_page">Theory</span>		
+		    <BR>
+		    <BR>
+    
+		<div id="tab_duo_text">
+              <div id="tab_space_lateral"><a href="#sub_0" class="lnk_text">Regression</a></div>
+			  <div id="tab_space_lateral"><a href="#sub_1" class="lnk_text">Ordinary Least Squares (OLS)</a></div>
+		      <div id="tab_space_lateral"><a href="#sub_2" class="lnk_text">Ridge</a></div>
+		      <div id="tab_space_lateral"><a href="#sub_3" class="lnk_text">Principal Component Regression (PCR)</a></div>
+			  <div id="tab_space_lateral"><a href="#sub_4" class="lnk_text">Partial Least Squares (PLS) </a></div>
+			  <div id="tab_space_lateral"><a href="#sub_4a" class="lnk_text">Local regression </a></div>
+			  <div id="tab_space_lateral"><a href="#sub_4b" class="lnk_text">Forward selection (FS) </a></div>
+			  <div id="tab_space_lateral"><a href="#sub_4c" class="lnk_text">Genetic Algorithms (GAs) </a></div>
+			  <div id="tab_space_lateral"><a href="#sub_5" class="lnk_text">Reshaped Sequential Replacement (RSR)</a></div>
+	   	</div>
+    <BR><a name="sub_1"></a>
+		    <BR>
+		    
+		<span class="title_paragraph">Regression</span>
+		    <BR>
+		    <BR>
+		    The aim of regression methods is to estimate the mathematical relationship between a set of independent variables and a quantitative response. In other words, the model estimates the response as a function of the variables. A linear regression model consists in a function given by a linear combination of the variables. To find the coefficients of this equation, it is necessary to estimate the regression coefficients from the data. Regression methods are thus supervised approaches, which are typically applied to independent variables arranged in a data matrix X (where rows correspond tosamples and columns to variables), while the dependent variable is collected in a column vector Y. <BR>
+		    <BR>
+			[<a href="#top" class="lnk_text">-> top</a>]<BR>
+		<BR><a name="sub_1"></a>
+		    <BR>
+		    
+		<span class="title_paragraph">Ordinary Least Squares (OLS)</span><BR>
+		    <BR>
+		    In the contest of linear regression, Ordinary Least Square (also known as Multiple Linear Regression, MLR) is probably the most basic and known approach. The solution of the model is based on the least squares. To estimate the regression coefficient, the least-squares method minimizes the summed square of residuals (RSS), where the residual of each sample is defined as the difference between experimental and calculated response.<br>
+		    <BR>
+			[<a href="#top" class="lnk_text">-> top</a>]
+		    <BR>
+		    <BR> <a name="sub_2"></a>
+		    <BR>
+		    
+		<span class="title_paragraph">Ridge</span>
+		    <BR>
+		    <BR>
+			Ridge regression can better estimate coefficients when variables are linearly correlated. In fact, in this condition, OLS  is highly sensitive to random errors in the experimental response, thus giving a large variance. On the opposite, RIDGE regression can overcome the presence of multicollinearity by adding a k parameter in the coefficient&rsquo;s estimation. Ridge diminishes the coefficients by imposing a penalty on their size. Small and positive values of k improve the conditioning of the problem and reduce the variance of the coefficients.<br>
+			Details on Ridge can be found here: The Elements of Statistical Learning: Data Mining, Inference, and Prediction (2009), by Trevor Hastie, Robert Tibshirani and Jerome Friedman (<a href="http://www-stat.stanford.edu/%7Etibs/ElemStatLearn/" target="_blank" class="lnk_text">available on line here</a>).<br>
+			<BR>
+			[<a href="#top" class="lnk_text">-> top</a>]		    
+    		    <BR>
+		        <BR>
+		        <a name="sub_3"></a>
+		        <BR>
+		    
+		        <span class="title_paragraph">Principal Component Regression (PCR)</span>
+		        <BR>
+		        <BR>
+			Another regression method based on the least square approach is the Principal Component Regression (PCR). PCR is very similar to OLS, with the main difference that regression coefficients are estimated on the scores of the Principal Components of the data. A PCA is thus performed on the data matrix and then the coefficients are calculated over the PCA score matrix using the ordinary least square method. PCR allows to overcome at least three common issues of applying the OLS regression on the original data: 1) OLS can be applied only in the case the number of the samples is greater than the number of features; 2)  OLS requires the matrix of the data to be invertible or not singular, if this condition is not fulfilled, it is impossible to compute the coefficients, while PCA allows this inversion; 3)  PCA compresses in the first components the most relevant information reducing the complexity of the model and joining together the variables with similar information. The optimal number of principal components is usually selected by means of cross validation procedures, by choosing the number of components which minimize the cross-validation error in regression.<br>
+			Details on PCR can be found here: I.E. Frank, J.H. Friedman (1993). &quot;A Statistical View of Some Chemometrics Regression Tools&quot;. Technometrics. 35, 109 &ndash; 135 [<a href="https://www.tandfonline.com/doi/abs/10.1080/00401706.1993.10485033" target="_blank" class="lnk_text">link</a>] <BR>
+		    <BR>
+			[<a href="#top" class="lnk_text">-> top</a>]
+			<BR>
+			<BR>
+			
+			<a name="sub_4" id="sub_4"></a> <BR>
+            <span class="title_paragraph">Partial Least Squares (PLS)</span><BR>
+            <BR>
+             Partial Least Squares (PLS) is a very popular regression approach. It is similar to PCR and the same advantages hold. PLS defines new components (called latent variables) but, in a different way with respect to PCR. In fact, both the data and the response are considered when the latent variables are calculated. In other word, whereas in PCA each component explains as much as possible of the variance of the data matrix X, PLS goes further: each latent variable is calculated to have the maximal covariance among the data X and the response Y. This is the fundamental difference between PCR and PLS and this is the reason why a PLS model usually requires less components than PCR. The intuitive idea of this approach is to decompose the data taking information from the response and vice versa. The optimal number of latent variables is usually selected by means of cross validation procedures, by choosing the number of latent variables which minimize the cross-validation error in regression.<br>
+            Details about theory and algorithms of PLS can be found here: M. Andersson, A comparison of nine PLS1 algorithms. Journal of Chemometrics 23 (2009) 518-529 [<a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/cem.1248" target="_blank" class="lnk_text">link</a>]<br>
+            <BR>
+[<a href="#top" class="lnk_text">-> top</a>]<BR>
+
+<BR>
+
+<a name="sub_4a" id="sub_4a"></a> <BR>
+            <span class="title_paragraph">Local regression</span><BR>
+            <BR>
+            The K-Nearest Neighbours (KNN) approach is conceptually quite simple and originally proposed for supervised classification. The response of a sample is calculated according to the responses of the K closest samples, i.e. it is calculated as the average of the responses of its k-nearest neighbors in the data space. In a computational point of view, all that is necessary is to calculate distances. The distance of a target sample (to be predicted) from each training sample is computed and training samples are then sorted according to this distances, from the most similar to the most distant. KNN is a non-linear method. When applying KNN, the optimal value of K must be searched for. One option for selecting K is by means of cross validation procedures, i.e. by testing a set of K values (e.g. from 1 to 10); then, the K giving the lowest regression error in cross-validation can be selected as the optimal one.<br>
+            The Binned Nearest Neighbors (BNN) approach is quite similar to KNN, with the difference that it predicts the response of a new sample by means of a variable number K of neighbours. The main idea is to consider for prediction all those neighbours that have the largest and comparable similarity to the sample to be predicted (target). To select the most similar neighbours, similarity intervals (i.e., bins) are predefined and the neighbours are distributed into these intervals according to their similarity to the target. All the neighbours falling into the bin with the largest similarity are considered for prediction. The optimal parameter used to define the bin thresholds is searched for in a defined range and is selected as the value giving the lowest regression error by a validation protocol.<br>
+            Details on kNN and BNN can be found here: Todeschini, R., Ballabio, D., Cassotti, M., Consonni, V. (2015). N3 and BNN: Two new similarity based classification methods in comparison with other classifiers. Journal of Chemical Information and Modeling, 55, 2365-2374 [<a href="https://pubs.acs.org/doi/abs/10.1021/acs.jcim.5b00326" target="_blank" class="lnk_text">link</a>]<BR>
+            <BR>
+[<a href="#top" class="lnk_text">-> top</a>]<BR>
+<BR>
+<a name="sub_4b" id="sub_4b"></a> <BR>
+<span class="title_paragraph">Forward selection (FS)</span><BR>
+<BR>
+Forward Selection (FS) is a basic and simple approach: it starts with an empty set of variables and variables are sequentially added to this set, one at a time; in each iteration, the criterion to select which variable to include can be based on the minimisation of mean squared error in cross-validation. Further detials on Forward Selectioncan be found here: I. Guyon and A. Elisseeff, &ldquo;An Introduction to Variable and Feature Selection,&rdquo; J. Mach. Learn. Res., vol. 3, no. 3, pp. 1157&ndash;1182, 2003. [<a href="https://psycnet.apa.org/record/2003-10726-001" target="_blank" class="lnk_text">link</a>] <br>
+<BR>
+[<a href="#top" class="lnk_text">-> top</a>]<BR>
+
+<BR>
+			
+            <a name="sub_4c" id="sub_4c"></a> <BR>
+            <span class="title_paragraph">Genetic Algorithms  (GAs)</span><BR>
+            <BR>
+            Variable selection approaches aim to find a subset of variables which are able to improve the prediction performance of the model. Genetic Algorithms (GAs) are a  popular variable selection method. The main point of  GAs is to mimic the natural selection of a population of chromosomes (models) that reproduces and evolves. The individuals with better fitness will tend to reproduce among themselves by simulating natural evolution. <br>
+            In the contest of variables selection, the chromosomes are initially randomly defined and the fitness function is associated to each chromosome (e.g. the Root Mean Squared Error in Cross-Validation, RMSECV). Then GA evolution starts, and, in each generation, the best models will breed with each other fostering the selection of the relevant variables. In this toolbox, GAs are applied with the following strategy: GA evolution is independently repeated for a fixed number of times (called runs). At the end of these runs, the frequency of selection of each variable in the best model of each GA run is evaluated. The user can thus select a frequency threshold; variables associated to frequencies higher than this threshold can then be used for a subsequent forward selection or all subset selection. After the subsequent selection on the reduced set of variables, a list of models (each one based on a selected number of variables) is proposed. The user can thus select which model to use and, thus, which subset of variables to be selected. <br>
+            There are many approaches based on the GA selection strategy. The approach implemented in this toolbox is inspired to that shown in the following paper: Leardi, R. and Lupianez, A. (1998). Genetic algorithms applied to feature selection in PLS regression: how and when to use them. Chemometrics and Intelligent Laboratory Systems, 41, 195-207 [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0169743998000513" target="_blank" class="lnk_text">link</a>]<br>
+            <BR>
+[<a href="#top" class="lnk_text">-> top</a>]<BR>
+
+<BR>
+<a name="sub_5" id="sub_5"></a> <BR>
+<span class="title_paragraph">Reshaped Sequential Replacement (RSR)</span><BR>
+<BR>
+The Sequential Replacement method defined by Miller in 1984 (Miller, A.J., 1984, Selection of subsets of regression variables. Journal of the Royal Statistical Society Series A (General) 147, 389-425) is based on a very simple algorithm. Each combination of variables, i.e. a model, is represented by a vector, called seed, which specifies the variables included in the model and is associated with a parameter representing the quality of the model. The basic idea is to substitute each variable included in a model, one at a time, with each of the remaining variables. All the variables in the model are thus replaced with all the remainders and the new seed is chosen when the obtained models have been compared. The seed that shows the best quality (e.g. the lowest Root Mean Squared Error in Cross-Validation, RMSECV) is chosen as new starting seed and the replacement procedure is reiterated till convergence. The Reshaped Sequential Replacement (RSR) algorithm is based on the Sequential Replacement approach, but implements some solutions aimed to increase the probability to converge to the optimal model and better identify models that suffer from pathologies, such as overfitting, chance correlation, variable redundancy and collinearity between predictors.<br>
+Details on Reshaped Sequential Replacement can be found here: <br>
+Cassotti, M., Grisoni, F., Todeschini, R. (2014). Reshaped Sequential Replacement: an efficient approach to variable selection. Chemometrics and Intelligent Laboratory Systems, 133, 136-148 [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0169743914000197" target="_blank" class="lnk_text">link</a>] <br>
+Grisoni, F., Cassotti, M., Todeschini, R. (2014). Reshaped Sequential Replacement for variable selection in QSPR: comparison with other reference methods. Journal of Chemometrics, 28, 249-259 [<a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/cem.2603" target="_blank" class="lnk_text">link</a>]<br>
+
+<BR>
+[<a href="#top" class="lnk_text">-> top</a>]<BR>
+<BR>
+<BR>
+&nbsp;  	     
+		 </center>
+            </div>
+  
+		  </div></td>
+  		</tr>
+	  </table>
+
+    </div>
+
+    <div id="footer">
+		<iframe src="footer.htm" width="700" height="13" scrolling="no" frameborder="0">
+  			no i_frames allowed :: change browser
+	  	</iframe>
+	</div>
+</div>
+</body>
+</html>
